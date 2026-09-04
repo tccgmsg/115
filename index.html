@@ -1,0 +1,1372 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 強制防搜尋引擎收錄 (Unlisted Page 關鍵設定) -->
+    <meta name="robots" content="noindex, nofollow, noarchive">
+    <title>臺中市115年度視障按摩據點評鑑行程</title>
+    <style>
+	/* 手機版介面最佳化 */
+* { box-sizing: border-box; }
+body { -webkit-text-size-adjust: 100%; }
+
+/* 頂部控制面板固定 */
+.sticky-header {
+    position: sticky;
+    top: 0;
+    background: #ffffff;
+    padding: 12px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    margin-bottom: 16px;
+    z-index: 100;
+}
+
+/* 按鈕加大防誤觸 */
+.btn-map {
+    display: block;
+    width: 100%;
+    text-align: center;
+    background-color: #f1f3f4;
+    padding: 10px 0;
+    border-radius: 8px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #3c4043;
+    margin-bottom: 12px;
+}
+.btn-form {
+    display: inline-block;
+    background-color: #34a853;
+    color: #ffffff;
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-weight: bold;
+    text-decoration: none;
+}
+.evaluator-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #fafafa;
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 8px;
+}
+        :root {
+            --primary: #1a73e8;
+            --bg: #f8f9fa;
+            --card-bg: #ffffff;
+            --text: #3c4043;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Microsoft JhengHei", "Segoe UI", Roboto, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 20px 12px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .header {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            margin-bottom: 20px;
+        }
+        h1 {
+            margin: 0 0 12px 0;
+            font-size: 1.5rem;
+            color: var(--primary);
+            text-align: center;
+        }
+        .header-title-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .header-title-copy {
+            flex: 1 1 520px;
+            min-width: 0;
+        }
+        .header-title-copy h1 {
+            margin-bottom: 8px;
+        }
+        .header-title-copy p {
+            text-align: left !important;
+        }
+        .header-form-btn {
+            flex: 0 0 auto;
+            white-space: nowrap;
+            background-color: #e6f4ea;
+            color: #137333;
+            border: 1px solid #b7dfc2;
+        }
+        .header-form-btn:hover {
+            background-color: #ceead6;
+        }
+        .filter-box {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 15px;
+        }
+        .filter-group {
+            flex: 1 1 100%;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 8px;
+        }
+        .filter-label {
+            flex: 0 0 100%;
+            margin-top: 2px;
+            color: #5f6368;
+            font-size: 0.88rem;
+            font-weight: bold;
+        }
+        .filter-group:first-of-type .filter-label {
+            margin-top: 0;
+        }
+        .search-input {
+            flex: 1 1 100%;
+            padding: 8px 12px;
+            border: 1px solid #dadce0;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            margin-bottom: 5px;
+        }
+        .filter-btn {
+            background: #e8f0fe;
+            color: #1967d2;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 16px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        .filter-btn.active {
+            background: var(--primary);
+            color: white;
+        }
+        .filter-actions {
+            flex: 1 1 100%;
+            display: flex;
+            justify-content: flex-start;
+        }
+        .card {
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 18px;
+            margin-bottom: 16px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+            border-left: 5px solid var(--primary);
+        }
+        .card-header {
+            border-bottom: 1px solid #f1f3f4;
+            padding-bottom: 12px;
+            margin-bottom: 12px;
+        }
+        .route-title-line {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 6px;
+        }
+        .route-name {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #202124;
+        }
+        .meta-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+        .badge {
+            background: #f1f3f4;
+            color: #5f6368;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: bold;
+        }
+        .badge-companion {
+            background: #e8f0fe;
+            color: #1967d2;
+        }
+        .badge-evaluator {
+            background: #feefc3;
+            color: #b06000;
+        }
+        .location-item {
+            background: #fafafa;
+            border: 1px solid #eef2f5;
+            border-radius: 8px;
+            padding: 12px;
+            margin-top: 10px;
+        }
+        .location-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .location-title {
+            font-size: 1.05rem;
+            font-weight: bold;
+            color: #1a252f;
+        }
+        .location-address {
+            font-size: 0.9rem;
+            color: #5f6368;
+            margin-top: 2px;
+        }
+        .map-link {
+            display: inline-block;
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 0.85rem;
+            margin-top: 4px;
+            font-weight: 500;
+        }
+        .map-link:hover {
+            text-decoration: underline;
+        }
+        .evaluators-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 8px;
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px dashed #dadce0;
+        }
+        .evaluator-box {
+            background: #ffffff;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            padding: 8px 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .btn-form {
+            background-color: #e6f4ea;
+            color: #137333;
+            padding: 5px 10px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 0.82rem;
+            font-weight: bold;
+        }
+        .btn-form:hover {
+            background-color: #ceead6;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <div class="header-title-row">
+            <div class="header-title-copy" style="text-align: center;">
+                <h1>📋 臺中市115年度視障按摩據點評鑑行程</h1>
+            </div>
+        </div>
+
+        <!-- 快速篩選列 -->
+        <div class="filter-box">
+            <p style="margin:0; font-size:0.9rem; color:#5f6368;">可複選委員、陪同者與日期，行程將套用所有已選條件</p>
+			<input type="text" id="searchInput" class="search-input" placeholder="🔍 搜尋路線、地點、委員、陪同者或日期..." onkeyup="filterData()">
+            <div class="filter-actions">
+                <button id="clearFiltersBtn" class="filter-btn active" onclick="clearAllFilters()">全部顯示</button>
+            </div>
+
+            <div class="filter-group" data-filter-type="committee">
+                <span class="filter-label">委員</span>
+                <button class="filter-btn" onclick="toggleFilter('劉禪穎', this)">劉禪穎</button>
+                <button class="filter-btn" onclick="toggleFilter('賴志松', this)">賴志松</button>
+                <button class="filter-btn" onclick="toggleFilter('黃位政', this)">黃位政</button>
+                <button class="filter-btn" onclick="toggleFilter('黃鐘慶', this)">黃鐘慶</button>
+                <button class="filter-btn" onclick="toggleFilter('王志宏', this)">王志宏</button>
+                <button class="filter-btn" onclick="toggleFilter('鄭尹惠', this)">鄭尹惠</button>
+                <button class="filter-btn" onclick="toggleFilter('顏昌華', this)">顏昌華</button>
+                <button class="filter-btn" onclick="toggleFilter('張英裕', this)">張英裕</button>
+                <button class="filter-btn" onclick="toggleFilter('龔昶元', this)">龔昶元</button>
+                <button class="filter-btn" onclick="toggleFilter('吳忠宏', this)">吳忠宏</button>
+                <button class="filter-btn" onclick="toggleFilter('黃玉琴', this)">黃玉琴</button>
+                <button class="filter-btn" onclick="toggleFilter('羅日生', this)">羅日生</button>
+            </div>
+
+            <div class="filter-group" data-filter-type="companion">
+                <span class="filter-label">陪同者</span>
+                <button class="filter-btn" onclick="toggleFilter('劉奕纖', this)">劉奕纖</button>
+                <button class="filter-btn" onclick="toggleFilter('金芮茜', this)">金芮茜</button>
+                <button class="filter-btn" onclick="toggleFilter('莫玉玲', this)">莫玉玲</button>
+                <button class="filter-btn" onclick="toggleFilter('陳峻偉', this)">陳峻偉</button>
+            </div>
+
+            <div class="filter-group" data-filter-type="date">
+                <span class="filter-label">日期</span>
+                <button class="filter-btn" onclick="toggleFilter('9月7日', this)">9月7日</button>
+                <button class="filter-btn" onclick="toggleFilter('9月8日', this)">9月8日</button>
+                <button class="filter-btn" onclick="toggleFilter('9月9日', this)">9月9日</button>
+                <button class="filter-btn" onclick="toggleFilter('9月10日', this)">9月10日</button>
+                <button class="filter-btn" onclick="toggleFilter('9月11日', this)">9月11日</button>
+                <button class="filter-btn" onclick="toggleFilter('9月14日', this)">9月14日</button>
+                <button class="filter-btn" onclick="toggleFilter('9月15日', this)">9月15日</button>
+                <button class="filter-btn" onclick="toggleFilter('9月16日', this)">9月16日</button>
+                <button class="filter-btn" onclick="toggleFilter('9月17日', this)">9月17日</button>
+                <button class="filter-btn" onclick="toggleFilter('9月18日', this)">9月18日</button>
+                <button class="filter-btn" onclick="toggleFilter('9月19日', this)">9月19日</button>
+                <button class="filter-btn" onclick="toggleFilter('9月21日', this)">9月21日</button>
+                <button class="filter-btn" onclick="toggleFilter('9月22日', this)">9月22日</button>
+                <button class="filter-btn" onclick="toggleFilter('9月23日', this)">9月23日</button>
+                <button class="filter-btn" onclick="toggleFilter('9月24日', this)">9月24日</button>
+            </div>
+        </div>
+		<div class="filter-group" data-filter-type="companion">
+                <span class="filter-label">備用評分表</span>
+		        <a href="https://forms.gle/CuojBxVKtAwSPJzG8" target="_blank" rel="noopener noreferrer" class="btn-form header-form-btn">📝 填寫評分表(系統未帶入)</a>
+        </div>
+    </div>
+
+    <!-- 行程列表容器 -->
+    <div id="itineraryList">
+
+        <!-- 路線 1 -->
+        <div class="card" data-search="路線1 路線 1 路線編號：3 山 9月7日 劉奕纖 劉禪穎 賴志松 C18 立大按摩 C19 清心視障按摩">
+            <div class="card-header">
+                <div class="route-title-line">
+                    <span class="route-name">路線 1（路線編號：3）｜ 區域：山</span>
+                    <span class="badge badge-evaluator">👨‍⚖️ 評鑑委員：劉禪穎、賴志松</span>
+                </div>
+                <div class="meta-badges">
+                    <span class="badge">📅 9月7日 (一) 下午 13:00:00</span>
+                    <span class="badge badge-companion">🤝 陪同者：劉奕纖</span>
+                </div>
+            </div>
+            <div class="location-item">
+                <div class="location-header">
+                    <div>
+                        <div class="location-title">📍 [C18] 立大按摩</div>
+                        <div class="location-address">臺中市豐原區育英路177巷3號</div>
+                        <a href="https://maps.google.com/?q=立大按摩" target="_blank" class="map-link">🗺️ 開啟 Google 地圖</a>
+                    </div>
+                </div>
+                <div class="evaluators-grid">
+                    <div class="evaluator-box"><span>👤 劉禪穎 委員</span><a href="https://docs.google.com/forms/d/e/1FAIpQLSd57Od3cl7ekzOk0FCDpJZar_PWaH0ANHhcCSkxkZbqByVNOw/viewform?usp=pp_url&entry.81411495=C18&entry.1023405674=%E5%8A%89%E7%A6%AA%E7%A9%8E" target="_blank" class="btn-form">📝 填寫評分表</a></div>
+                    <div class="evaluator-box"><span>👤 賴志松 委員</span><a href="https://docs.google.com/forms/d/e/1FAIpQLSd57Od3cl7ekzOk0FCDpJZar_PWaH0ANHhcCSkxkZbqByVNOw/viewform?usp=pp_url&entry.81411495=C18&entry.1023405674=%E8%B3%B4%E5%BF%97%E6%9D%BE" target="_blank" class="btn-form">📝 填寫評分表</a></div>
+                </div>
+            </div>
+            <div class="location-item">
+                <div class="location-header">
+                    <div>
+                        <div class="location-title">📍 [C19] 清心視障按摩</div>
+                        <div class="location-address">臺中市潭子區中山路二段283巷33號</div>
+                        <a href="https://maps.google.com/?q=清心視障按摩" target="_blank" class="map-link">🗺️ 開啟 Google 地圖</a>
+                    </div>
+                </div>
+                <div class="evaluators-grid">
+                    <div class="evaluator-box"><span>👤 劉禪穎 委員</span><a href="https://docs.google.com/forms/d/e/1FAIpQLSd57Od3cl7ekzOk0FCDpJZar_PWaH0ANHhcCSkxkZbqByVNOw/viewform?usp=pp_url&entry.81411495=C19&entry.1023405674=%E5%8A%89%E7%A6%AA%E7%A9%8E" target="_blank" class="btn-form">📝 填寫評分表</a></div>
+                    <div class="evaluator-box"><span>👤 賴志松 委員</span><a href="https://docs.google.com/forms/d/e/1FAIpQLSd57Od3cl7ekzOk0FCDpJZar_PWaH0ANHhcCSkxkZbqByVNOw/viewform?usp=pp_url&entry.81411495=C19&entry.1023405674=%E8%B3%B4%E5%BF%97%E6%9D%BE" target="_blank" class="btn-form">📝 填寫評分表</a></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 路線 2 -->
+        <div class="card" data-search="路線2 路線 2 路線編號：7 海 9月7日 金芮茜 黃位政 黃鐘慶 C5 奇哥按摩館 C1 袁師傅經絡按摩 C2 健康村視障按摩養生會館">
+            <div class="card-header">
+                <div class="route-title-line">
+                    <span class="route-name">路線 2（路線編號：7）｜ 區域：海</span>
+                    <span class="badge badge-evaluator">👨‍⚖️ 評鑑委員：黃位政、黃鐘慶</span>
+                </div>
+                <div class="meta-badges">
+                    <span class="badge">📅 9月7日 (一) 下午 13:00:00</span>
+                    <span class="badge badge-companion">🤝 陪同者：金芮茜</span>
+                </div>
+            </div>
+            <div class="location-item">
+                <div class="location-header">
+                    <div>
+                        <div class="location-title">📍 [C5] 奇哥按摩館</div>
+                        <div class="location-address">臺中市龍井區新興路40之12號</div>
+                        <a href="https://maps.google.com/?q=奇哥按摩館" target="_blank" class="map-link">🗺️ 開啟 Google 地圖</a>
+                    </div>
+                </div>
+                <div class="evaluators-grid">
+                    <div class="evaluator-box"><span>👤 黃位政 委員</span><a href="https://docs.google.com/forms/d/e/1FAIpQLSd57Od3cl7ekzOk0FCDpJZar_PWaH0ANHhcCSkxkZbqByVNOw/viewform?usp=pp_url&entry.81411495=C5&entry.1023405674=%E9%BB%83%E4%BD%8D%E6%94%BF" target="_blank" class="btn-form">📝 填寫評分表</a></div>
+                    <div class="evaluator-box"><span>👤 黃鐘慶 委員</span><a href="https://docs.google.com/forms/d/e/1FAIpQLSd57Od3cl7ekzOk0FCDpJZar_PWaH0ANHhcCSkxkZbqByVNOw/viewform?usp=pp_url&entry.81411495=C5&entry.1023405674=%E9%BB%83%E9%90%98%E6%85%B6" target="_blank" class="btn-form">📝 填寫評分表</a></div>
+                </div>
+            </div>
+            <div class="location-item">
+                <div class="location-header">
+                    <div>
+                        <div class="location-title">📍 [C1] 袁師傅經絡按摩</div>
+                        <div class="location-address">臺中市梧棲區臺灣大道八段175號</div>
+                        <a href="https://maps.google.com/?q=袁師傅經絡按摩" target="_blank" class="map-link">🗺️ 開啟 Google 地圖</a>
+                    </div>
+                </div>
+                <div class="evaluators-grid">
+                    <div class="evaluator-box"><span>👤 黃位政 委員</span><a href="https://docs.google.com/forms/d/e/1FAIpQLSd57Od3cl7ekzOk0FCDpJZar_PWaH0ANHhcCSkxkZbqByVNOw/viewform?usp=pp_url&entry.81411495=C1&entry.1023405674=%E9%BB%83%E4%BD%8D%E6%94%BF" target="_blank" class="btn-form">📝 填寫評分表</a></div>
+                    <div class="evaluator-box"><span>👤 黃鐘慶 委員</span><a href="https://docs.google.com/forms/d/e/1FAIpQLSd57Od3cl7ekzOk0FCDpJZar_PWaH0ANHhcCSkxkZbqByVNOw/viewform?usp=pp_url&entry.81411495=C1&entry.1023405674=%E9%BB%83%E9%90%98%E6%85%B6" target="_blank" class="btn-form">📝 填寫評分表</a></div>
+                </div>
+            </div>
+            <div class="location-item">
+                <div class="location-header">
+                    <div>
+                        <div class="location-title">📍 [C2] 健康村視障按摩養生會館</div>
+                        <div class="location-address">臺中市沙鹿區中正街6-1號</div>
+                        <a href="https://maps.google.com/?q=健康村視障按摩養生會館" target="_blank" class="map-link">🗺️ 開啟 Google 地圖</a>
+                    </div>
+                </div>
+                <div class="evaluators-grid">
+                    <div class="evaluator-box"><span>👤 黃位政 委員</span><a href="https://docs.google.com/forms/d/e/1FAIpQLSd57Od3cl7ekzOk0FCDpJZar_PWaH0ANHhcCSkxkZbqByVNOw/viewform?usp=pp_url&entry.81411495=C2&entry.1023405674=%E9%BB%83%E4%BD%8D%E6%94%BF" target="_blank" class="btn-form">📝 填寫評分表</a></div>
+                    <div class="evaluator-box"><span>👤 黃鐘慶 委員</span><a href="https://docs.google.com/forms/d/e/1FAIpQLSd57Od3cl7ekzOk0FCDpJZar_PWaH0ANHhcCSkxkZbqByVNOw/viewform?usp=pp_url&entry.81411495=C2&entry.1023405674=%E9%BB%83%E9%90%98%E6%85%B6" target="_blank" class="btn-form">📝 填寫評分表</a></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 路線 3 -->
+        <div class="card" data-search="路線3 路線 3 路線編號：15 山 9月8日 劉奕纖 黃位政 王志宏 A5 204專業視障按摩 B1 直心視障按摩">
+            <div class="card-header">
+                <div class="route-title-line">
+                    <span class="route-name">路線 3（路線編號：15）｜ 區域：山</span>
+                    <span class="badge badge-evaluator">👨‍⚖️ 評鑑委員：黃位政、王志宏</span>
+                </div>
+                <div class="meta-badges">
+                    <span class="badge">📅 9月8日 (二) 上午 09:00:00</span>
+                    <span class="badge badge-companion">🤝 陪同者：劉奕纖</span>
+                </div>
+            </div>
+            <div class="location-item">
+                <div class="location-header">
+                    <div>
+                        <div class="location-title">📍 [A5] 204專業視障按摩</div>
+                        <div class="location-address">臺中市豐原區中正路1之1號2樓(臺鐵豐原車站售票亭對面204店位)</div>
+                        <a href="https://maps.google.com/?q=204豐原火車站視障按摩" target="_blank" class="map-link">🗺️ 開啟 Google 地圖</a>
+                    </div>
+                </div>
+                <div class="evaluators-grid">
+                    <div class="evaluator-box"><span>👤 黃位政 委員</span><a href="https://docs.google.com/forms/d/e/1FAIpQLSd57Od3cl7ekzOk0FCDpJZar_PWaH0ANHhcCSkxkZbqByVNOw/viewform?usp=pp_url&entry.81411495=A5&entry.1023405674=%E9%BB%83%E4%BD%8D%E6%94%BF" target="_blank" class="btn-form">📝 填寫評分表</a></div>
+                    <div class="evaluator-box"><span>👤 王志宏 委員</span><a href="https://docs.google.com/forms/d/e/1FAIpQLSd57Od3cl7ekzOk0FCDpJZar_PWaH0ANHhcCSkxkZbqByVNOw/viewform?usp=pp_url&entry.81411495=A5&entry.1023405674=%E7%8E%8B%E5%BF%97%E5%AE%8F" target="_blank" class="btn-form">📝 填寫評分表</a></div>
+                </div>
+            </div>
+            <div class="location-item">
+                <div class="location-header">
+                    <div>
+                        <div class="location-title">📍 [B1] 直心視障按摩</div>
+                        <div class="location-address">臺中市神岡區社口街499巷18號</div>
+                        <a href="https://maps.google.com/?q=直心視障按摩" target="_blank" class="map-link">🗺️ 開啟 Google 地圖</a>
+                    </div>
+                </div>
+                <div class="evaluators-grid">
+                    <div class="evaluator-box"><span>👤 黃位政 委員</span><a href="https://docs.google.com/forms/d/e/1FAIpQLSd57Od3cl7ekzOk0FCDpJZar_PWaH0ANHhcCSkxkZbqByVNOw/viewform?usp=pp_url&entry.81411495=B1&entry.1023405674=%E9%BB%83%E4%BD%8D%E6%94%BF" target="_blank" class="btn-form">📝 填寫評分表</a></div>
+                    <div class="evaluator-box"><span>👤 王志宏 委員</span><a href="https://docs.google.com/forms/d/e/1FAIpQLSd57Od3cl7ekzOk0FCDpJZar_PWaH0ANHhcCSkxkZbqByVNOw/viewform?usp=pp_url&entry.81411495=B1&entry.1023405674=%E7%8E%8B%E5%BF%97%E5%AE%8F" target="_blank" class="btn-form">📝 填寫評分表</a></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 路線 4 -->
+        <div class="card" data-search="路線4 路線 4 路線編號：12 城 9月9日 莫玉玲 鄭尹惠 顏昌華 C13 百利按摩 C12 真輕鬆視障按摩館">
+            <div class="card-header">
+                <div class="route-title-line">
+                    <span class="route-name">路線 4（路線編號：12）｜ 區域：城</span>
+                    <span class="badge badge-evaluator">👨‍⚖️ 評鑑委員：鄭尹惠、顏昌華</span>
+                </div>
+                <div class="meta-badges">
+                    <span class="badge">📅 9月9日 (三) 上午 10:00:00</span>
+                    <span class="badge badge-companion">🤝 陪同者：莫玉玲</span>
+                </div>
+            </div>
+            <div class="location-item">
+                <div class="location-header">
+                    <div>
+                        <div class="location-title">📍 [C13] 百利按摩</div>
+                        <div class="location-address">臺中市中區光復路32號3樓</div>
+                        <a href="https://maps.google.com/?q=百利按摩" target="_blank" class="map-link">🗺️ 開啟 Google 地圖</a>
+                    </div>
+                </div>
+                <div class="evaluators-grid">
+                    <div class="evaluator-box"><span>👤 鄭尹惠 委員</span><a href="https://docs.google.com/forms/d/e/1FAIpQLSd57Od3cl7ekzOk0FCDpJZar_PWaH0ANHhcCSkxkZbqByVNOw/viewform?usp=pp_url&entry.81411495=C13&entry.1023405674=%E9%84%AD%E5%B0%B9%E6%83%A0" target="_blank" class="btn-form">📝 填寫評分表</a></div>
+                    <div class="evaluator-box"><span>👤 顏昌華 委員</span><a href="https://docs.google.com/forms/d/e/1FAIpQLSd57Od3cl7ekzOk0FCDpJZar_PWaH0ANHhcCSkxkZbqByVNOw/viewform?usp=pp_url&entry.81411495=C13&entry.1023405674=%E9%A1%8F%E6%98%8C%E8%8F%AF" target="_blank" class="btn-form">📝 填寫評分表</a></div>
+                </div>
+            </div>
+            <div class="location-item">
+                <div class="location-header">
+                    <div>
+                        <div class="location-title">📍 [C12] 真輕鬆視障按摩館</div>
+                        <div class="location-address">臺中市中區臺灣大道一段540號</div>
+                        <a href="https://maps.google.com/?q=真輕鬆視障按摩館" target="_blank" class="map-link">🗺️ 開啟 Google 地圖</a>
+                    </div>
+                </div>
+                <div class="evaluators-grid">
+                    <div class="evaluator-box"><span>👤 鄭尹惠 委員</span><a href="https://docs.google.com/forms/d/e/1FAIpQLSd57Od3cl7ekzOk0FCDpJZar_PWaH0ANHhcCSkxkZbqByVNOw/viewform?usp=pp_url&entry.81411495=C12&entry.1023405674=%E9%84%AD%E5%B0%B9%E6%83%A0" target="_blank" class="btn-form">📝 填寫評分表</a></div>
+                    <div class="evaluator-box"><span>👤 顏昌華 委員</span><a href="https://docs.google.com/forms/d/e/1FAIpQLSd57Od3cl7ekzOk0FCDpJZar_PWaH0ANHhcCSkxkZbqByVNOw/viewform?usp=pp_url&entry.81411495=C12&entry.1023405674=%E9%A1%8F%E6%98%8C%E8%8F%AF" target="_blank" class="btn-form">📝 填寫評分表</a></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 路線 5 -->
+        <div class="card" data-search="路線5 路線 5 路線編號：23 海 9月10日 金芮茜 張英裕 黃位政 D11 熊大養生按摩(清水店) D12 熊大養生按摩(沙鹿店)">
+            <div class="card-header">
+                <div class="route-title-line">
+                    <span class="route-name">路線 5（路線編號：23）｜ 區域：海</span>
+                    <span class="badge badge-evaluator">👨‍⚖️ 評鑑委員：張英裕、黃位政</span>
+                </div>
+                <div class="meta-badges">
+                    <span class="badge">📅 9月10日 (四) 下午 15:00:00</span>
+                    <span class="badge badge-companion">🤝 陪同者：金芮茜</span>
+                </div>
+            </div>
+            <div class="location-item">
+                <div class="location-header">
+                    <div>
+                        <div class="location-title">📍 [D11] 熊大養生按摩(清水店)</div>
+                        <div class="location-address">臺中市清水區中山路151之2號</div>
+                        <a href="https://maps.google.com/?q=熊大養生按摩(清水店)" target="_blank" class="map-link">🗺️ 開啟 Google 地圖</a>
+                    </div>
+                </div>
+                <div class="evaluators-grid">
+                    <div class="evaluator-box"><span>👤 張英裕 委員</span><a href="https://docs.google.com/forms/d/e/1FAIpQLSd57Od3cl7ekzOk0FCDpJZar_PWaH0ANHhcCSkxkZbqByVNOw/viewform?usp=pp_url&entry.81411495=D11&entry.1023405674=%E5%BC%B5%E8%8B%B1%E8%A3%95" target="_blank" class="btn-form">📝 填寫評分表</a></div>
+                    <div class="evaluator-box"><span>👤 黃位政 委員</span><a href="https://docs.google.com/forms/d/e/1FAIpQLSd57Od3cl7ekzOk0FCDpJZar_PWaH0ANHhcCSkxkZbqByVNOw/viewform?usp=pp_url&entry.81411495=D11&entry.1023405674=%E9%BB%83%E4%BD%8D%E6%94%BF" target="_blank" class="btn-form">📝 填寫評分表</a></div>
+                </div>
+            </div>
+            <div class="location-item">
+                <div class="location-header">
+                    <div>
+                        <div class="location-title">📍 [D12] 熊大養生按摩(沙鹿店)</div>
+                        <div class="location-address">臺中市沙鹿區成功東街22號1樓</div>
+                        <a href="https://maps.google.com/?q=熊大養生按摩（沙鹿店）" target="_blank" class="map-link">🗺️ 開啟 Google 地圖</a>
+                    </div>
+                </div>
+                <div class="evaluators-grid">
+                    <div class="evaluator-box"><span>👤 張英裕 委員</span><a href="https://docs.google.com/forms/d/e/1FAIpQLSd57Od3cl7ekzOk0FCDpJZar_PWaH0ANHhcCSkxkZbqByVNOw/viewform?usp=pp_url&entry.81411495=D12&entry.1023405674=%E5%BC%B5%E8%8B%B1%E8%A3%95" target="_blank" class="btn-form">📝 填寫評分表</a></div>
+                    <div class="evaluator-box"><span>👤 黃位政 委員</span><a href="https://docs.google.com/forms/d/e/1FAIpQLSd57Od3cl7ekzOk0FCDpJZar_PWaH0ANHhcCSkxkZbqByVNOw/viewform?usp=pp_url&entry.81411495=D12&entry.1023405674=%E9%BB%83%E4%BD%8D%E6%94%BF" target="_blank" class="btn-form">📝 填寫評分表</a></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 路線 6 -->
+        <div class="card" data-search="路線6 路線 6 路線編號：6 屯 9月11日 陳峻偉 張英裕 劉禪穎 B6 明月按摩工作室 B7 白有東按摩工作室">
+            <div class="card-header">
+                <div class="route-title-line">
+                    <span class="route-name">路線 6（路線編號：6）｜ 區域：屯</span>
+                    <span class="badge badge-evaluator">👨‍⚖️ 評鑑委員：張英裕、劉禪穎</span>
+                </div>
+                <div class="meta-badges">
+                    <span class="badge">📅 9月11日 (五) 上午 09:30:00</span>
+                    <span class="badge badge-companion">🤝 陪同者：陳峻偉</span>
+                </div>
+            </div>
+            <div class="location-item">
+                <div class="location-header">
+                    <div>
+                        <div class="location-title">📍 [B6] 明月按摩工作室</div>
+                        <div class="location-address">臺中市北區中山路424號</div>
+                        <a href="https://maps.google.com/?q=明月按摩工作室" target="_blank" class="map-link">🗺️ 開啟 Google 地圖</a>
+                    </div>
+                </div>
+                <div class="evaluators-grid">
+                    <div class="evaluator-box"><span>👤 張英裕 委員</span><a href="https://docs.google.com/forms/d/e/1FAIpQLSd57Od3cl7ekzOk0FCDpJZar_PWaH0ANHhcCSkxkZbqByVNOw/viewform?usp=pp_url&entry.81411495=B6&entry.1023405674=%E5%BC%B5%E8%8B%B1%E8%A3%95" target="_blank" class="btn-form">📝 填寫評分表</a></div>
+                    <div class="evaluator-box"><span>👤 劉禪穎 委員</span><a href="https://docs.google.com/forms/d/e/1FAIpQLSd57Od3cl7ekzOk0FCDpJZar_PWaH0ANHhcCSkxkZbqByVNOw/viewform?usp=pp_url&entry.81411495=B6&entry.1023405674=%E5%8A%89%E7%A6%AA%E7%A9%8E" target="_blank" class="btn-form">📝 填寫評分表</a></div>
+                </div>
+            </div>
+            <div class="location-item">
+                <div class="location-header">
+                    <div>
+                        <div class="location-title">📍 [B7] 白有東按摩工作室</div>
+                        <div class="location-address">臺中市霧峰區育德路26巷27號</div>
+                        <a href="https://maps.google.com/?q=白有東按摩工作室" target="_blank" class="map-link">🗺️ 開啟 Google 地圖</a>
+                    </div>
+                </div>
+                <div class="evaluators-grid">
+                    <div class="evaluator-box"><span>👤 張英裕 委員</span><a href="https://docs.google.com/forms/d/e/1FAIpQLSd57Od3cl7ekzOk0FCDpJZar_PWaH0ANHhcCSkxkZbqByVNOw/viewform?usp=pp_url&entry.81411495=B7&entry.1023405674=%E5%BC%B5%E8%8B%B1%E8%A3%95" target="_blank" class="btn-form">📝 填寫評分表</a></div>
+                    <div class="evaluator-box"><span>👤 劉禪穎 委員</span><a href="https://docs.google.com/forms/d/e/1FAIpQLSd57Od3cl7ekzOk0FCDpJZar_PWaH0ANHhcCSkxkZbqByVNOw/viewform?usp=pp_url&entry.81411495=B7&entry.1023405674=%E5%8A%89%E7%A6%AA%E7%A9%8E" target="_blank" class="btn-form">📝 填寫評分表</a></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 路線 7 -->
+        <div class="card" data-search="路線7 路線 7 路線編號：17 屯 9月11日 陳峻偉 鄭尹惠 龔昶元 C23 回元視障按摩 C7 松盈視障按摩">
+            <div class="card-header">
+                <div class="route-title-line">
+                    <span class="route-name">路線 7（路線編號：17）｜ 區域：屯</span>
+                    <span class="badge badge-evaluator">👨‍⚖️ 評鑑委員：鄭尹惠、龔昶元</span>
+                </div>
+                <div class="meta-badges">
+                    <span class="badge">📅 9月11日 (五) 下午 14:30:00</span>
+                    <span class="badge badge-companion">🤝 陪同者：陳峻偉</span>
+                </div>
+            </div>
+            <div class="location-item">
+                <div class="location-header">
+                    <div>
+                        <div class="location-title">📍 [C23] 回元視障按摩</div>
+                        <div class="location-address">臺中市南區樹德里大慶街二段61-1號</div>
+                        <a href="https://maps.google.com/?q=回元視障按摩" target="_blank" class="map-link">🗺️ 開啟 Google 地圖</a>
+                    </div>
+                </div>
+                <div class="evaluators-grid">
+                    <div class="evaluator-box"><span>👤 鄭尹惠 委員</span><a href="https://docs.google.com/forms/d/e/1FAIpQLSd57Od3cl7ekzOk0FCDpJZar_PWaH0ANHhcCSkxkZbqByVNOw/viewform?usp=pp_url&entry.81411495=C23&entry.1023405674=%E9%84%AD%E5%B0%B9%E6%83%A0" target="_blank" class="btn-form">📝 填寫評分表</a></div>
+                    <div class="evaluator-box"><span>👤 龔昶元 委員</span><a href="https://docs.google.com/forms/d/e/1FAIpQLSd57Od3cl7ekzOk0FCDpJZar_PWaH0ANHhcCSkxkZbqByVNOw/viewform?usp=pp_url&entry.81411495=C23&entry.1023405674=%E9%BE%94%E6%98%B6%E5%85%83" target="_blank" class="btn-form">📝 填寫評分表</a></div>
+                </div>
+            </div>
+            <div class="location-item">
+                <div class="location-header">
+                    <div>
+                        <div class="location-title">📍 [C7] 松盈視障按摩</div>
+                        <div class="location-address">臺中市大里區大里路102之3號</div>
+                        <a href="https://maps.google.com/?q=松盈視障按摩" target="_blank" class="map-link">🗺️ 開啟 Google 地圖</a>
+                    </div>
+                </div>
+                <div class="evaluators-grid">
+                    <div class="evaluator-box"><span>👤 鄭尹惠 委員</span><a href="https://docs.google.com/forms/d/e/1FAIpQLSd57Od3cl7ekzOk0FCDpJZar_PWaH0ANHhcCSkxkZbqByVNOw/viewform?usp=pp_url&entry.81411495=C7&entry.1023405674=%E9%84%AD%E5%B0%B9%E6%83%A0" target="_blank" class="btn-form">📝 填寫評分表</a></div>
+                    <div class="evaluator-box"><span>👤 龔昶元 委員</span><a href="https://docs.google.com/forms/d/e/1FAIpQLSd57Od3cl7ekzOk0FCDpJZar_PWaH0ANHhcCSkxkZbqByVNOw/viewform?usp=pp_url&entry.81411495=C7&entry.1023405674=%E9%BE%94%E6%98%B6%E5%85%83" target="_blank" class="btn-form">📝 填寫評分表</a></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 路線 8 -->
+        <div class="card" data-search="路線8 路線 8 路線編號：10 城 9月14日 金芮茜 龔昶元 吳忠宏 C8 順基按摩棧 C9 冠君視障按摩(原東帝)">
+            <div class="card-header">
+                <div class="route-title-line">
+                    <span class="route-name">路線 8（路線編號：10）｜ 區域：城</span>
+                    <span class="badge badge-evaluator">👨‍⚖️ 評鑑委員：龔昶元、吳忠宏</span>
+                </div>
+                <div class="meta-badges">
+                    <span class="badge">📅 9月14日 (一) 上午 10:00:00</span>
+                    <span class="badge badge-companion">🤝 陪同者：金芮茜</span>
+                </div>
+            </div>
+            <div class="location-item">
+                <div class="location-header">
+                    <div>
+                        <div class="location-title">📍 [C8] 順基按摩棧</div>
+                        <div class="location-address">臺中市南區仁義街4之1號</div>
+                        <a href="https://maps.google.com/?q=順基按摩" target="_blank" class="map-link">🗺️ 開啟 Google 地圖</a>
+                    </div>
+                </div>
+                <div class="evaluators-grid">
+                    <div class="evaluator-box"><span>👤 龔昶元 委員</span><a href="https://docs.google.com/forms/d/e/1FAIpQLSd57Od3cl7ekzOk0FCDpJZar_PWaH0ANHhcCSkxkZbqByVNOw/viewform?usp=pp_url&entry.81411495=C8&entry.1023405674=%E9%BE%94%E6%98%B6%E5%85%83" target="_blank" class="btn-form">📝 填寫評分表</a></div>
+                    <div class="evaluator-box"><span>👤 吳忠宏 委員</span><a href="https://docs.google.com/forms/d/e/1FAIpQLSd57Od3cl7ekzOk0FCDpJZar_PWaH0ANHhcCSkxkZbqByVNOw/viewform?usp=pp_url&entry.81411495=C8&entry.1023405674=%E5%90%B3%E5%BF%A0%E5%AE%8F" target="_blank" class="btn-form">📝 填寫評分表</a></div>
+                </div>
+            </div>
+            <div class="location-item">
+                <div class="location-header">
+                    <div>
+                        <div class="location-title">📍 [C9] 冠君視障按摩(原東帝)</div>
+                        <div class="location-address">臺中市南區忠明南路788號</div>
+                        <a href="https://maps.google.com/?q=冠君視障按摩" target="_blank" class="map-link">🗺️ 開啟 Google 地圖</a>
+                    </div>
+                </div>
+                <div class="evaluators-grid">
+                    <div class="evaluator-box"><span>👤 龔昶元 委員</span><a href="https://docs.google.com/forms/d/e/1FAIpQLSd57Od3cl7ekzOk0FCDpJZar_PWaH0ANHhcCSkxkZbqByVNOw/viewform?usp=pp_url&entry.81411495=C9&entry.1023405674=%E9%BE%94%E6%98%B6%E5%85%83" target="_blank" class="btn-form">📝 填寫評分表</a></div>
+                    <div class="evaluator-box"><span>👤 吳忠宏 委員</span><a href="https://docs.google.com/forms/d/e/1FAIpQLSd57Od3cl7ekzOk0FCDpJZar_PWaH0ANHhcCSkxkZbqByVNOw/viewform?usp=pp_url&entry.81411495=C9&entry.1023405674=%E5%90%B3%E5%BF%A0%E5%AE%8F" target="_blank" class="btn-form">📝 填寫評分表</a></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 路線 9 -->
+        <div class="card" data-search="路線9 路線 9 路線編號：8 海 9月14日 陳峻偉 王志宏 黃鐘慶 D9 信安按摩大連店 C3 康鈺按摩之家">
+            <div class="card-header">
+                <div class="route-title-line">
+                    <span class="route-name">路線 9（路線編號：8）｜ 區域：海</span>
+                    <span class="badge badge-evaluator">👨‍⚖️ 評鑑委員：王志宏、黃鐘慶</span>
+                </div>
+                <div class="meta-badges">
+                    <span class="badge">📅 9月14日 (一) 上午 10:00:00</span>
+                    <span class="badge badge-companion">🤝 陪同者：陳峻偉</span>
+                </div>
+            </div>
+            <div class="location-item">
+                <div class="location-header">
+                    <div>
+                        <div class="location-title">📍 [D9] 信安按摩大連店</div>
+                        <div class="location-address">臺中市北屯區大連路三段5號(昌平路口)</div>
+                        <a href="https://maps.google.com/?q=信安按摩《台中大連店》" target="_blank" class="map-link">🗺️ 開啟 Google 地圖</a>
+                    </div>
+                </div>
+                <div class="evaluators-grid">
+                    <div class="evaluator-box"><span>👤 王志宏 委員</span><a href="https://docs.google.com/forms/d/e/1FAIpQLSd57Od3cl7ekzOk0FCDpJZar_PWaH0ANHhcCSkxkZbqByVNOw/viewform?usp=pp_url&entry.81411495=D9&entry.1023405674=%E7%8E%8B%E5%BF%97%E5%AE%8F" target="_blank" class="btn-form">📝 填寫評分表</a></div>
+                    <div class="evaluator-box"><span>👤 黃鐘慶 委員</span><a href="https://docs.google.com/forms/d/e/1FAIpQLSd57Od3cl7ekzOk0FCDpJZar_PWaH0ANHhcCSkxkZbqByVNOw/viewform?usp=pp_url&entry.81411495=D9&entry.1023405674=%E9%BB%83%E9%90%98%E6%85%B6" target="_blank" class="btn-form">📝 填寫評分表</a></div>
+                </div>
+            </div>
+            <div class="location-item">
+                <div class="location-header">
+                    <div>
+                        <div class="location-title">📍 [C3] 康鈺按摩之家</div>
+                        <div class="location-address">臺中市西屯區工業區一路72巷30號</div>
+                        <a href="https://maps.google.com/?q=康鈺按摩之家" target="_blank" class="map-link">🗺️ 開啟 Google 地圖</a>
+                    </div>
+                </div>
+                <div class="evaluators-grid">
+                    <div class="evaluator-box"><span>👤 王志宏 委員</span><a href="https://docs.google.com/forms/d/e/1FAIpQLSd57Od3cl7ekzOk0FCDpJZar_PWaH0ANHhcCSkxkZbqByVNOw/viewform?usp=pp_url&entry.81411495=C3&entry.1023405674=%E7%8E%8B%E5%BF%97%E5%AE%8F" target="_blank" class="btn-form">📝 填寫評分表</a></div>
+                    <div class="evaluator-box"><span>👤 黃鐘慶 委員</span><a href="https://docs.google.com/forms/d/e/1FAIpQLSd57Od3cl7ekzOk0FCDpJZar_PWaH0ANHhcCSkxkZbqByVNOw/viewform?usp=pp_url&entry.81411495=C3&entry.1023405674=%E9%BB%83%E9%90%98%E6%85%B6" target="_blank" class="btn-form">📝 填寫評分表</a></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 路線 10 -->
+        <div class="card" data-search="路線10 路線 10 路線編號：24 海 9月14日 陳峻偉 王志宏 黃鐘慶 D14 信安按摩東海店 C4 俊福健康按摩中心">
+            <div class="card-header">
+                <div class="route-title-line">
+                    <span class="route-name">路線 10（路線編號：24）｜ 區域：海</span>
+                    <span class="badge badge-evaluator">👨‍⚖️ 評鑑委員：王志宏、黃鐘慶</span>
+                </div>
+                <div class="meta-badges">
+                    <span class="badge">📅 9月14日 (一) 下午</span>
+                    <span class="badge badge-companion">🤝 陪同者：陳峻偉</span>
+                </div>
+            </div>
+            <div class="location-item">
+                <div class="location-header">
+                    <div>
+                        <div class="location-title">📍 [D14] 信安按摩東海店</div>
+                        <div class="location-address">臺中市龍井區新興路96之11號(近遊園南路)</div>
+                        <a href="https://maps.google.com/?q=信安按摩《台中東海店》" target="_blank" class="map-link">🗺️ 開啟 Google 地圖</a>
+                    </div>
+                </div>
+                <div class="evaluators-grid">
+                    <div class="evaluator-box"><span>👤 王志宏 委員</span><a href="https://docs.google.com/forms/d/e/1FAIpQLSd57Od3cl7ekzOk0FCDpJZar_PWaH0ANHhcCSkxkZbqByVNOw/viewform?usp=pp_url&entry.81411495=D14&entry.1023405674=%E7%8E%8B%E5%BF%97%E5%AE%8F" target="_blank" class="btn-form">📝 填寫評分表</a></div>
+                    <div class="evaluator-box"><span>👤 黃鐘慶 委員</span><a href="https://docs.google.com/forms/d/e/1FAIpQLSd57Od3cl7ekzOk0FCDpJZar_PWaH0ANHhcCSkxkZbqByVNOw/viewform?usp=pp_url&entry.81411495=D14&entry.1023405674=%E9%BB%83%E9%90%98%E6%85%B6" target="_blank" class="btn-form">📝 填寫評分表</a></div>
+                </div>
+            </div>
+            <div class="location-item">
+                <div class="location-header">
+                    <div>
+                        <div class="location-title">📍 [C4] 俊福健康按摩中心</div>
+                        <div class="location-address">臺中市龍井區沙田路五段30巷15號</div>
+                        <a href="https://maps.google.com/?q=俊福健康按摩中心" target="_blank" class="map-link">🗺️ 開啟 Google 地圖</a>
+                    </div>
+                </div>
+                <div class="evaluators-grid">
+                    <div class="evaluator-box"><span>👤 王志宏 委員</span><a href="https://docs.google.com/forms/d/e/1FAIpQLSd57Od3cl7ekzOk0FCDpJZar_PWaH0ANHhcCSkxkZbqByVNOw/viewform?usp=pp_url&entry.81411495=C4&entry.1023405674=%E7%8E%8B%E5%BF%97%E5%AE%8F" target="_blank" class="btn-form">📝 填寫評分表</a></div>
+                    <div class="evaluator-box"><span>👤 黃鐘慶 委員</span><a href="https://docs.google.com/forms/d/e/1FAIpQLSd57Od3cl7ekzOk0FCDpJZar_PWaH0ANHhcCSkxkZbqByVNOw/viewform?usp=pp_url&entry.81411495=C4&entry.1023405674=%E9%BB%83%E9%90%98%E6%85%B6" target="_blank" class="btn-form">📝 填寫評分表</a></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 路線 11 -->
+        <div class="card" data-search="路線11 路線 11 路線編號：18 屯 9月15日 陳峻偉 黃玉琴 劉禪穎 D1 今日按摩中心（遼陽店） D2 盲裡偷閒專業視障按摩">
+            <div class="card-header">
+                <div class="route-title-line">
+                    <span class="route-name">路線 11（路線編號：18）｜ 區域：屯</span>
+                    <span class="badge badge-evaluator">👨‍⚖️ 評鑑委員：黃玉琴、劉禪穎</span>
+                </div>
+                <div class="meta-badges">
+                    <span class="badge">📅 9月15日 (二) 上午 09:00:00</span>
+                    <span class="badge badge-companion">🤝 陪同者：陳峻偉</span>
+                </div>
+            </div>
+            <div class="location-item">
+                <div class="location-header">
+                    <div>
+                        <div class="location-title">📍 [D1] 今日按摩中心（遼陽店）</div>
+                        <div class="location-address">臺中市北屯區遼陽四街47號</div>
+                        <a href="https://maps.google.com/?q=今日按摩中心-遼陽店" target="_blank" class="map-link">🗺️ 開啟 Google 地圖</a>
+                    </div>
+                </div>
+                <div class="evaluators-grid">
+                    <div class="evaluator-box"><span>👤 黃玉琴 委員</span><a href="https://docs.google.com/forms/d/e/1FAIpQLSd57Od3cl7ekzOk0FCDpJZar_PWaH0ANHhcCSkxkZbqByVNOw/viewform?usp=pp_url&entry.81411495=D1&entry.1023405674=%E9%BB%83%E7%8E%89%E7%90%B4" target="_blank" class="btn-form">📝 填寫評分表</a></div>
+                    <div class="evaluator-box"><span>👤 劉禪穎 委員</span><a href="https://docs.google.com/forms/d/e/1FAIpQLSd57Od3cl7ekzOk0FCDpJZar_PWaH0ANHhcCSkxkZbqByVNOw/viewform?usp=pp_url&entry.81411495=D1&entry.1023405674=%E5%8A%89%E7%A6%AA%E7%A9%8E" target="_blank" class="btn-form">📝 填寫評分表</a></div>
+                </div>
+            </div>
+            <div class="location-item">
+                <div class="location-header">
+                    <div>
+                        <div class="location-title">📍 [D2] 盲裡偷閒專業視障按摩</div>
+                        <div class="location-address">臺中市霧峰區萊園路9巷6號</div>
+                        <a href="https://maps.google.com/?q=盲裡偷閒專業視障按摩" target="_blank" class="map-link">🗺️ 開啟 Google 地圖</a>
+                    </div>
+                </div>
+                <div class="evaluators-grid">
+                    <div class="evaluator-box"><span>👤 黃玉琴 委員</span><a href="https://docs.google.com/forms/d/e/1FAIpQLSd57Od3cl7ekzOk0FCDpJZar_PWaH0ANHhcCSkxkZbqByVNOw/viewform?usp=pp_url&entry.81411495=D2&entry.1023405674=%E9%BB%83%E7%8E%89%E7%90%B4" target="_blank" class="btn-form">📝 填寫評分表</a></div>
+                    <div class="evaluator-box"><span>👤 劉禪穎 委員</span><a href="https://docs.google.com/forms/d/e/1FAIpQLSd57Od3cl7ekzOk0FCDpJZar_PWaH0ANHhcCSkxkZbqByVNOw/viewform?usp=pp_url&entry.81411495=D2&entry.1023405674=%E5%8A%89%E7%A6%AA%E7%A9%8E" target="_blank" class="btn-form">📝 填寫評分表</a></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 路線 12 -->
+        <div class="card" data-search="路線12 路線 12 路線編號：1 城 9月15日 莫玉玲 龔昶元 顏昌華 A1 中市盲協視障按摩便利站（榮總新門診站） A2 中華啟明視障按摩便利站-萬家福西屯店">
+            <div class="card-header">
+                <div class="route-title-line">
+                    <span class="route-name">路線 12（路線編號：1）｜ 區域：城</span>
+                    <span class="badge badge-evaluator">👨‍⚖️ 評鑑委員：龔昶元、顏昌華</span>
+                </div>
+                <div class="meta-badges">
+                    <span class="badge">📅 9月15日 (二) 下午 14:00:00</span>
+                    <span class="badge badge-companion">🤝 陪同者：莫玉玲</span>
+                </div>
+            </div>
+            <div class="location-item">
+                <div class="location-header">
+                    <div>
+                        <div class="location-title">📍 [A1] 中市盲協視障按摩便利站（榮總新門診站）</div>
+                        <div class="location-address">臺中市西屯區臺灣大道四段1650號（新門診大樓1樓118門診旁）</div>
+                        <a href="https://maps.google.com/?q=臺中市西屯區臺灣大道四段1650號" target="_blank" class="map-link">🗺️ 開啟 Google 地圖</a>
+                    </div>
+                </div>
+                <div class="evaluators-grid">
+                    <div class="evaluator-box"><span>👤 龔昶元 委員</span><a href="https://docs.google.com/forms/d/e/1FAIpQLSd57Od3cl7ekzOk0FCDpJZar_PWaH0ANHhcCSkxkZbqByVNOw/viewform?usp=pp_url&entry.81411495=A1&entry.1023405674=%E9%BE%94%E6%98%B6%E5%85%83" target="_blank" class="btn-form">📝 填寫評分表</a></div>
+                    <div class="evaluator-box"><span>👤 顏昌華 委員</span><a href="https://docs.google.com/forms/d/e/1FAIpQLSd57Od3cl7ekzOk0FCDpJZar_PWaH0ANHhcCSkxkZbqByVNOw/viewform?usp=pp_url&entry.81411495=A1&entry.1023405674=%E9%A1%8F%E6%98%8C%E8%8F%AF" target="_blank" class="btn-form">📝 填寫評分表</a></div>
+                </div>
+            </div>
+            <div class="location-item">
+                <div class="location-header">
+                    <div>
+                        <div class="location-title">📍 [A2] 中華啟明視障按摩便利站-萬家福西屯店</div>
+                        <div class="location-address">臺中市西屯區臺灣大道四段1086號</div>
+                        <a href="https://maps.google.com/?q=啟明視障按摩便利站" target="_blank" class="map-link">🗺️ 開啟 Google 地圖</a>
+                    </div>
+                </div>
+                <div class="evaluators-grid">
+                    <div class="evaluator-box"><span>👤 龔昶元 委員</span><a href="https://docs.google.com/forms/d/e/1FAIpQLSd57Od3cl7ekzOk0FCDpJZar_PWaH0ANHhcCSkxkZbqByVNOw/viewform?usp=pp_url&entry.81411495=A2&entry.1023405674=%E9%BE%94%E6%98%B6%E5%85%83" target="_blank" class="btn-form">📝 填寫評分表</a></div>
+                    <div class="evaluator-box"><span>👤 顏昌華 委員</span><a href="https://docs.google.com/forms/d/e/1FAIpQLSd57Od3cl7ekzOk0FCDpJZar_PWaH0ANHhcCSkxkZbqByVNOw/viewform?usp=pp_url&entry.81411495=A2&entry.1023405674=%E9%A1%8F%E6%98%8C%E8%8F%AF" target="_blank" class="btn-form">📝 填寫評分表</a></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 路線 13 -->
+        <div class="card" data-search="路線13 路線 13 路線編號：5 城 9月16日 劉奕纖 黃位政 羅日生 B3 藝鑫按摩 B5 國手之手運動按摩工作室 B2 瑞新按摩">
+            <div class="card-header">
+                <div class="route-title-line">
+                    <span class="route-name">路線 13（路線編號：5）｜ 區域：城</span>
+                    <span class="badge badge-evaluator">👨‍⚖️ 評鑑委員：黃位政、羅日生</span>
+                </div>
+                <div class="meta-badges">
+                    <span class="badge">📅 9月16日 (三) 下午 13:00:00</span>
+                    <span class="badge badge-companion">🤝 陪同者：劉奕纖</span>
+                </div>
+            </div>
+            <div class="location-item">
+                <div class="location-header">
+                    <div>
+                        <div class="location-title">📍 [B3] 藝鑫按摩</div>
+                        <div class="location-address">臺中市北屯區青島路四段23號</div>
+                        <a href="https://maps.google.com/?q=台中藝鑫視障按摩" target="_blank" class="map-link">🗺️ 開啟 Google 地圖</a>
+                    </div>
+                </div>
+                <div class="evaluators-grid">
+                    <div class="evaluator-box"><span>👤 黃位政 委員</span><a href="https://docs.google.com/forms/d/e/1FAIpQLSd57Od3cl7ekzOk0FCDpJZar_PWaH0ANHhcCSkxkZbqByVNOw/viewform?usp=pp_url&entry.81411495=B3&entry.1023405674=%E9%BB%83%E4%BD%8D%E6%94%BF" target="_blank" class="btn-form">📝 填寫評分表</a></div>
+                    <div class="evaluator-box"><span>👤 羅日生 委員</span><a href="https://docs.google.com/forms/d/e/1FAIpQLSd57Od3cl7ekzOk0FCDpJZar_PWaH0ANHhcCSkxkZbqByVNOw/viewform?usp=pp_url&entry.81411495=B3&entry.1023405674=%E7%BE%85%E6%97%A5%E7%94%9F" target="_blank" class="btn-form">📝 填寫評分表</a></div>
+                </div>
+            </div>
+            <div class="location-item">
+                <div class="location-header">
+                    <div>
+                        <div class="location-title">📍 [B5] 國手之手運動按摩工作室</div>
+                        <div class="location-address">臺中市北區國泰街103號</div>
+                        <a href="https://maps.google.com/?q=國手之手-運動按摩" target="_blank" class="map-link">🗺️ 開啟 Google 地圖</a>
+                    </div>
+                </div>
+                <div class="evaluators-grid">
+                    <div class="evaluator-box"><span>👤 黃位政 委員</span><a href="https://docs.google.com/forms/d/e/1FAIpQLSd57Od3cl7ekzOk0FCDpJZar_PWaH0ANHhcCSkxkZbqByVNOw/viewform?usp=pp_url&entry.81411495=B5&entry.1023405674=%E9%BB%83%E4%BD%8D%E6%94%BF" target="_blank" class="btn-form">📝 填寫評分表</a></div>
+                    <div class="evaluator-box"><span>👤 羅日生 委員</span><a href="https://docs.google.com/forms/d/e/1FAIpQLSd57Od3cl7ekzOk0FCDpJZar_PWaH0ANHhcCSkxkZbqByVNOw/viewform?usp=pp_url&entry.81411495=B5&entry.1023405674=%E7%BE%85%E6%97%A5%E7%94%9F" target="_blank" class="btn-form">📝 填寫評分表</a></div>
+                </div>
+            </div>
+            <div class="location-item">
+                <div class="location-header">
+                    <div>
+                        <div class="location-title">📍 [B2] 瑞新按摩</div>
+                        <div class="location-address">臺中市北屯區松文街30號</div>
+                        <a href="https://maps.google.com/?q=瑞新按摩" target="_blank" class="map-link">🗺️ 開啟 Google 地圖</a>
+                    </div>
+                </div>
+                <div class="evaluators-grid">
+                    <div class="evaluator-box"><span>👤 黃位政 委員</span><a href="https://docs.google.com/forms/d/e/1FAIpQLSd57Od3cl7ekzOk0FCDpJZar_PWaH0ANHhcCSkxkZbqByVNOw/viewform?usp=pp_url&entry.81411495=B2&entry.1023405674=%E9%BB%83%E4%BD%8D%E6%94%BF" target="_blank" class="btn-form">📝 填寫評分表</a></div>
+                    <div class="evaluator-box"><span>👤 羅日生 委員</span><a href="https://docs.google.com/forms/d/e/1FAIpQLSd57Od3cl7ekzOk0FCDpJZar_PWaH0ANHhcCSkxkZbqByVNOw/viewform?usp=pp_url&entry.81411495=B2&entry.1023405674=%E7%BE%85%E6%97%A5%E7%94%9F" target="_blank" class="btn-form">📝 填寫評分表</a></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 路線 14 -->
+        <div class="card" data-search="路線14 路線 14 路線編號：4 城 9月17日 劉奕纖 黃玉琴 劉禪穎 B4 巧手視障按摩工作室">
+            <div class="card-header">
+                <div class="route-title-line">
+                    <span class="route-name">路線 14（路線編號：4）｜ 區域：屯</span>
+                    <span class="badge badge-evaluator">👨‍⚖️ 評鑑委員：黃玉琴、劉禪穎</span>
+                </div>
+                <div class="meta-badges">
+                    <span class="badge">📅 9月17日 (四) 上午 10:00:00</span>
+                    <span class="badge badge-companion">🤝 陪同者：劉奕纖</span>
+                </div>
+            </div>
+            <div class="location-item">
+                <div class="location-header">
+                    <div>
+                        <div class="location-title">📍 [B4] 巧手視障按摩工作室</div>
+                        <div class="location-address">臺中市西屯區合江街74之1號</div>
+                        <a href="https://maps.google.com/?q=巧手視障按摩工作室" target="_blank" class="map-link">🗺️ 開啟 Google 地圖</a>
+                    </div>
+                </div>
+                <div class="evaluators-grid">
+                    <div class="evaluator-box"><span>👤 黃玉琴 委員</span><a href="https://docs.google.com/forms/d/e/1FAIpQLSd57Od3cl7ekzOk0FCDpJZar_PWaH0ANHhcCSkxkZbqByVNOw/viewform?usp=pp_url&entry.81411495=B4&entry.1023405674=%E9%BB%83%E7%8E%89%E7%90%B4" target="_blank" class="btn-form">📝 填寫評分表</a></div>
+					<div class="evaluator-box"><span>👤 劉禪穎 委員</span><a href="https://docs.google.com/forms/d/e/1FAIpQLSd57Od3cl7ekzOk0FCDpJZar_PWaH0ANHhcCSkxkZbqByVNOw/viewform?usp=pp_url&entry.81411495=B4&entry.1023405674=%E5%8A%89%E7%A6%AA%E7%A9%8E" target="_blank" class="btn-form">📝 填寫評分表</a></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 路線 15 -->
+        <div class="card" data-search="路線15 路線 15 路線編號：14 城 9月18日 劉奕纖 羅日生 吳忠宏 C17 秀明按摩之家 C16 上好盲人專業按摩">
+            <div class="card-header">
+                <div class="route-title-line">
+                    <span class="route-name">路線 15（路線編號：14）｜ 區域：城</span>
+                    <span class="badge badge-evaluator">👨‍⚖️ 評鑑委員：羅日生、吳忠宏</span>
+                </div>
+                <div class="meta-badges">
+                    <span class="badge">📅 9月18日 (五) 上午 09:30:00</span>
+                    <span class="badge badge-companion">🤝 陪同者：劉奕纖</span>
+                </div>
+            </div>
+            <div class="location-item">
+                <div class="location-header">
+                    <div>
+                        <div class="location-title">📍 [C17] 秀明按摩之家</div>
+                        <div class="location-address">臺中市中區中華西街61號</div>
+                        <a href="https://maps.google.com/?q=秀明按摩" target="_blank" class="map-link">🗺️ 開啟 Google 地圖</a>
+                    </div>
+                </div>
+                <div class="evaluators-grid">
+                    <div class="evaluator-box"><span>👤 羅日生 委員</span><a href="https://docs.google.com/forms/d/e/1FAIpQLSd57Od3cl7ekzOk0FCDpJZar_PWaH0ANHhcCSkxkZbqByVNOw/viewform?usp=pp_url&entry.81411495=C17&entry.1023405674=%E7%BE%85%E6%97%A5%E7%94%9F" target="_blank" class="btn-form">📝 填寫評分表</a></div>
+                    <div class="evaluator-box"><span>👤 吳忠宏 委員</span><a href="https://docs.google.com/forms/d/e/1FAIpQLSd57Od3cl7ekzOk0FCDpJZar_PWaH0ANHhcCSkxkZbqByVNOw/viewform?usp=pp_url&entry.81411495=C17&entry.1023405674=%E5%90%B3%E5%BF%A0%E5%AE%8F" target="_blank" class="btn-form">📝 填寫評分表</a></div>
+                </div>
+            </div>
+            <div class="location-item">
+                <div class="location-header">
+                    <div>
+                        <div class="location-title">📍 [C16] 上好盲人專業按摩</div>
+                        <div class="location-address">臺中市北區德化街697號</div>
+                        <a href="https://maps.google.com/?q=上好視障按摩" target="_blank" class="map-link">🗺️ 開啟 Google 地圖</a>
+                    </div>
+                </div>
+                <div class="evaluators-grid">
+                    <div class="evaluator-box"><span>👤 羅日生 委員</span><a href="https://docs.google.com/forms/d/e/1FAIpQLSd57Od3cl7ekzOk0FCDpJZar_PWaH0ANHhcCSkxkZbqByVNOw/viewform?usp=pp_url&entry.81411495=C16&entry.1023405674=%E7%BE%85%E6%97%A5%E7%94%9F" target="_blank" class="btn-form">📝 填寫評分表</a></div>
+                    <div class="evaluator-box"><span>👤 吳忠宏 委員</span><a href="https://docs.google.com/forms/d/e/1FAIpQLSd57Od3cl7ekzOk0FCDpJZar_PWaH0ANHhcCSkxkZbqByVNOw/viewform?usp=pp_url&entry.81411495=C16&entry.1023405674=%E5%90%B3%E5%BF%A0%E5%AE%8F" target="_blank" class="btn-form">📝 填寫評分表</a></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 路線 16 -->
+        <div class="card" data-search="路線16 路線 16 路線編號：11 城 9月18日 金芮茜 黃玉琴 鄭尹惠 C11 非凡視障經絡專業按摩">
+            <div class="card-header">
+                <div class="route-title-line">
+                    <span class="route-name">路線 16（路線編號：11）｜ 區域：城</span>
+                    <span class="badge badge-evaluator">👨‍⚖️ 評鑑委員：黃玉琴、鄭尹惠</span>
+                </div>
+                <div class="meta-badges">
+                    <span class="badge">📅 9月18日 (五) 下午 15:00:00</span>
+                    <span class="badge badge-companion">🤝 陪同者：金芮茜</span>
+                </div>
+            </div>
+            <div class="location-item">
+                <div class="location-header">
+                    <div>
+                        <div class="location-title">📍 [C11] 非凡視障經絡專業按摩</div>
+                        <div class="location-address">臺中市西屯區寶慶街30巷28號1樓</div>
+                        <a href="https://maps.google.com/?q=非凡視障經絡專業按摩" target="_blank" class="map-link">🗺️ 開啟 Google 地圖</a>
+                    </div>
+                </div>
+                <div class="evaluators-grid">
+                    <div class="evaluator-box"><span>👤 黃玉琴 委員</span><a href="https://docs.google.com/forms/d/e/1FAIpQLSd57Od3cl7ekzOk0FCDpJZar_PWaH0ANHhcCSkxkZbqByVNOw/viewform?usp=pp_url&entry.81411495=C11&entry.1023405674=%E9%BB%83%E7%8E%89%E7%90%B4" target="_blank" class="btn-form">📝 填寫評分表</a></div>
+					<div class="evaluator-box"><span>👤 鄭尹惠 委員</span><a href="https://docs.google.com/forms/d/e/1FAIpQLSd57Od3cl7ekzOk0FCDpJZar_PWaH0ANHhcCSkxkZbqByVNOw/viewform?usp=pp_url&entry.81411495=C11&entry.1023405674=%E9%84%AD%E5%B0%B9%E6%83%A0" target="_blank" class="btn-form">📝 填寫評分表</a></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 路線 17 -->
+        <div class="card" data-search="路線17 路線 17 路線編號：2 城 9月19日 陳峻偉 王志宏 顏昌華 A3 臺中啟明視障按摩便利站（興大農夫市集） A4 伊甸視障按摩-LaLaport站">
+            <div class="card-header">
+                <div class="route-title-line">
+                    <span class="route-name">路線 17（路線編號：2）｜ 區域：城</span>
+                    <span class="badge badge-evaluator">👨‍⚖️ 評鑑委員：王志宏、顏昌華</span>
+                </div>
+                <div class="meta-badges">
+                    <span class="badge">📅 9月19日 (六) 上午 10:30:00</span>
+                    <span class="badge badge-companion">🤝 陪同者：陳峻偉</span>
+                </div>
+            </div>
+            <div class="location-item">
+                <div class="location-header">
+                    <div>
+                        <div class="location-title">📍 [A3] 臺中啟明視障按摩便利站（興大農夫市集）</div>
+                        <div class="location-address">臺中市南區興大路145號（國立中興大學惠蓀堂後方）</div>
+                        <a href="https://maps.google.com/?q=臺中市南區興大路145號" target="_blank" class="map-link">🗺️ 開啟 Google 地圖</a>
+                    </div>
+                </div>
+                <div class="evaluators-grid">
+                    <div class="evaluator-box"><span>👤 王志宏 委員</span><a href="https://docs.google.com/forms/d/e/1FAIpQLSd57Od3cl7ekzOk0FCDpJZar_PWaH0ANHhcCSkxkZbqByVNOw/viewform?usp=pp_url&entry.81411495=A3&entry.1023405674=%E7%8E%8B%E5%BF%97%E5%AE%8F" target="_blank" class="btn-form">📝 填寫評分表</a></div>
+                    <div class="evaluator-box"><span>👤 顏昌華 委員</span><a href="https://docs.google.com/forms/d/e/1FAIpQLSd57Od3cl7ekzOk0FCDpJZar_PWaH0ANHhcCSkxkZbqByVNOw/viewform?usp=pp_url&entry.81411495=A3&entry.1023405674=%E9%A1%8F%E6%98%8C%E8%8F%AF" target="_blank" class="btn-form">📝 填寫評分表</a></div>
+                </div>
+            </div>
+            <div class="location-item">
+                <div class="location-header">
+                    <div>
+                        <div class="location-title">📍 [A4] 伊甸視障按摩-LaLaport站</div>
+                        <div class="location-address">臺中市東區進德路700號南館B1</div>
+                        <a href="https://maps.google.com/?q=伊甸視障按摩" target="_blank" class="map-link">🗺️ 開啟 Google 地圖</a>
+                    </div>
+                </div>
+                <div class="evaluators-grid">
+                    <div class="evaluator-box"><span>👤 王志宏 委員</span><a href="https://docs.google.com/forms/d/e/1FAIpQLSd57Od3cl7ekzOk0FCDpJZar_PWaH0ANHhcCSkxkZbqByVNOw/viewform?usp=pp_url&entry.81411495=A4&entry.1023405674=%E7%8E%8B%E5%BF%97%E5%AE%8F" target="_blank" class="btn-form">📝 填寫評分表</a></div>
+                    <div class="evaluator-box"><span>👤 顏昌華 委員</span><a href="https://docs.google.com/forms/d/e/1FAIpQLSd57Od3cl7ekzOk0FCDpJZar_PWaH0ANHhcCSkxkZbqByVNOw/viewform?usp=pp_url&entry.81411495=A4&entry.1023405674=%E9%A1%8F%E6%98%8C%E8%8F%AF" target="_blank" class="btn-form">📝 填寫評分表</a></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 路線 18 -->
+        <div class="card" data-search="路線18 路線 18 路線編號：22 城 9月21日 莫玉玲 鄭尹惠 黃位政 D13 信安按摩向上店 D10 信安按摩精誠店">
+            <div class="card-header">
+                <div class="route-title-line">
+                    <span class="route-name">路線 18（路線編號：22）｜ 區域：城</span>
+                    <span class="badge badge-evaluator">👨‍⚖️ 評鑑委員：鄭尹惠、黃位政</span>
+                </div>
+                <div class="meta-badges">
+                    <span class="badge">📅 9月21日 (一) 上午 10:00:00</span>
+                    <span class="badge badge-companion">🤝 陪同者：莫玉玲</span>
+                </div>
+            </div>
+            <div class="location-item">
+                <div class="location-header">
+                    <div>
+                        <div class="location-title">📍 [D13] 信安按摩向上店</div>
+                        <div class="location-address">臺中市西區向上路一段357號</div>
+                        <a href="https://maps.google.com/?q=信安按摩《台中向上店》" target="_blank" class="map-link">🗺️ 開啟 Google 地圖</a>
+                    </div>
+                </div>
+                <div class="evaluators-grid">
+                    <div class="evaluator-box"><span>👤 鄭尹惠 委員</span><a href="https://docs.google.com/forms/d/e/1FAIpQLSd57Od3cl7ekzOk0FCDpJZar_PWaH0ANHhcCSkxkZbqByVNOw/viewform?usp=pp_url&entry.81411495=D13&entry.1023405674=%E9%84%AD%E5%B0%B9%E6%83%A0" target="_blank" class="btn-form">📝 填寫評分表</a></div>
+                    <div class="evaluator-box"><span>👤 黃位政 委員</span><a href="https://docs.google.com/forms/d/e/1FAIpQLSd57Od3cl7ekzOk0FCDpJZar_PWaH0ANHhcCSkxkZbqByVNOw/viewform?usp=pp_url&entry.81411495=D13&entry.1023405674=%E9%BB%83%E4%BD%8D%E6%94%BF" target="_blank" class="btn-form">📝 填寫評分表</a></div>
+                </div>
+            </div>
+            <div class="location-item">
+                <div class="location-header">
+                    <div>
+                        <div class="location-title">📍 [D10] 信安按摩精誠店</div>
+                        <div class="location-address">臺中市西區精誠路130-3號</div>
+                        <a href="https://maps.google.com/?q=信安按摩《台中精誠店》" target="_blank" class="map-link">🗺️ 開啟 Google 地圖</a>
+                    </div>
+                </div>
+                <div class="evaluators-grid">
+                    <div class="evaluator-box"><span>👤 鄭尹惠 委員</span><a href="https://docs.google.com/forms/d/e/1FAIpQLSd57Od3cl7ekzOk0FCDpJZar_PWaH0ANHhcCSkxkZbqByVNOw/viewform?usp=pp_url&entry.81411495=D10&entry.1023405674=%E9%84%AD%E5%B0%B9%E6%83%A0" target="_blank" class="btn-form">📝 填寫評分表</a></div>
+                    <div class="evaluator-box"><span>👤 黃位政 委員</span><a href="https://docs.google.com/forms/d/e/1FAIpQLSd57Od3cl7ekzOk0FCDpJZar_PWaH0ANHhcCSkxkZbqByVNOw/viewform?usp=pp_url&entry.81411495=D10&entry.1023405674=%E9%BB%83%E4%BD%8D%E6%94%BF" target="_blank" class="btn-form">📝 填寫評分表</a></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 路線 19 -->
+        <div class="card" data-search="路線19 路線 19 路線編號：19 城 9月22日 劉奕纖 吳忠宏 羅日生 D4 今日按摩中心（光復店） D3 清境視障專業手技按摩-梅川店">
+            <div class="card-header">
+                <div class="route-title-line">
+                    <span class="route-name">路線 19（路線編號：19）｜ 區域：城</span>
+                    <span class="badge badge-evaluator">👨‍⚖️ 評鑑委員：吳忠宏、羅日生</span>
+                </div>
+                <div class="meta-badges">
+                    <span class="badge">📅 9月22日 (二) 上午 09:30:00</span>
+                    <span class="badge badge-companion">🤝 陪同者：劉奕纖</span>
+                </div>
+            </div>
+            <div class="location-item">
+                <div class="location-header">
+                    <div>
+                        <div class="location-title">📍 [D4] 今日按摩中心（光復店）</div>
+                        <div class="location-address">臺中市中區光復路60-6號</div>
+                        <a href="https://maps.google.com/?q=今日按摩中心" target="_blank" class="map-link">🗺️ 開啟 Google 地圖</a>
+                    </div>
+                </div>
+                <div class="evaluators-grid">
+                    <div class="evaluator-box"><span>👤 吳忠宏 委員</span><a href="https://docs.google.com/forms/d/e/1FAIpQLSd57Od3cl7ekzOk0FCDpJZar_PWaH0ANHhcCSkxkZbqByVNOw/viewform?usp=pp_url&entry.81411495=D4&entry.1023405674=%E5%90%B3%E5%BF%A0%E5%AE%8F" target="_blank" class="btn-form">📝 填寫評分表</a></div>
+                    <div class="evaluator-box"><span>👤 羅日生 委員</span><a href="https://docs.google.com/forms/d/e/1FAIpQLSd57Od3cl7ekzOk0FCDpJZar_PWaH0ANHhcCSkxkZbqByVNOw/viewform?usp=pp_url&entry.81411495=D4&entry.1023405674=%E7%BE%85%E6%97%A5%E7%94%9F" target="_blank" class="btn-form">📝 填寫評分表</a></div>
+                </div>
+            </div>
+            <div class="location-item">
+                <div class="location-header">
+                    <div>
+                        <div class="location-title">📍 [D3] 清境視障專業手技按摩-梅川店</div>
+                        <div class="location-address">臺中市北區梅川西路四段38號</div>
+                        <a href="https://maps.google.com/?q=清境按摩" target="_blank" class="map-link">🗺️ 開啟 Google 地圖</a>
+                    </div>
+                </div>
+                <div class="evaluators-grid">
+                    <div class="evaluator-box"><span>👤 吳忠宏 委員</span><a href="https://docs.google.com/forms/d/e/1FAIpQLSd57Od3cl7ekzOk0FCDpJZar_PWaH0ANHhcCSkxkZbqByVNOw/viewform?usp=pp_url&entry.81411495=D3&entry.1023405674=%E5%90%B3%E5%BF%A0%E5%AE%8F" target="_blank" class="btn-form">📝 填寫評分表</a></div>
+                    <div class="evaluator-box"><span>👤 羅日生 委員</span><a href="https://docs.google.com/forms/d/e/1FAIpQLSd57Od3cl7ekzOk0FCDpJZar_PWaH0ANHhcCSkxkZbqByVNOw/viewform?usp=pp_url&entry.81411495=D3&entry.1023405674=%E7%BE%85%E6%97%A5%E7%94%9F" target="_blank" class="btn-form">📝 填寫評分表</a></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 路線 20 -->
+        <div class="card" data-search="路線20 路線 20 路線編號：16 城 9月22日 陳峻偉 賴志松 劉禪穎 C22 大忙人視障按摩 C20 欣天堂視障按摩 C21 巷口按摩">
+            <div class="card-header">
+                <div class="route-title-line">
+                    <span class="route-name">路線 20（路線編號：16）｜ 區域：城</span>
+                    <span class="badge badge-evaluator">👨‍⚖️ 評鑑委員：賴志松、劉禪穎</span>
+                </div>
+                <div class="meta-badges">
+                    <span class="badge">📅 9月22日 (二) 上午 09:00:00</span>
+                    <span class="badge badge-companion">🤝 陪同者：陳峻偉</span>
+                </div>
+            </div>
+            <div class="location-item">
+                <div class="location-header">
+                    <div>
+                        <div class="location-title">📍 [C22] 大忙人視障按摩</div>
+                        <div class="location-address">臺中市北區梅亭東街41號</div>
+                        <a href="https://maps.google.com/?q=大忙人專業按摩" target="_blank" class="map-link">🗺️ 開啟 Google 地圖</a>
+                    </div>
+                </div>
+                <div class="evaluators-grid">
+                    <div class="evaluator-box"><span>👤 賴志松 委員</span><a href="https://docs.google.com/forms/d/e/1FAIpQLSd57Od3cl7ekzOk0FCDpJZar_PWaH0ANHhcCSkxkZbqByVNOw/viewform?usp=pp_url&entry.81411495=C22&entry.1023405674=%E8%B3%B4%E5%BF%97%E6%9D%BE" target="_blank" class="btn-form">📝 填寫評分表</a></div>
+                    <div class="evaluator-box"><span>👤 劉禪穎 委員</span><a href="https://docs.google.com/forms/d/e/1FAIpQLSd57Od3cl7ekzOk0FCDpJZar_PWaH0ANHhcCSkxkZbqByVNOw/viewform?usp=pp_url&entry.81411495=C22&entry.1023405674=%E5%8A%89%E7%A6%AA%E7%A9%8E" target="_blank" class="btn-form">📝 填寫評分表</a></div>
+                </div>
+            </div>
+            <div class="location-item">
+                <div class="location-header">
+                    <div>
+                        <div class="location-title">📍 [C20] 欣天堂視障按摩</div>
+                        <div class="location-address">臺中市北區漢口路5段98號1樓</div>
+                        <a href="https://maps.google.com/?q=欣天堂視障按摩" target="_blank" class="map-link">🗺️ 開啟 Google 地圖</a>
+                    </div>
+                </div>
+                <div class="evaluators-grid">
+                    <div class="evaluator-box"><span>👤 賴志松 委員</span><a href="https://docs.google.com/forms/d/e/1FAIpQLSd57Od3cl7ekzOk0FCDpJZar_PWaH0ANHhcCSkxkZbqByVNOw/viewform?usp=pp_url&entry.81411495=C20&entry.1023405674=%E8%B3%B4%E5%BF%97%E6%9D%BE" target="_blank" class="btn-form">📝 填寫評分表</a></div>
+                    <div class="evaluator-box"><span>👤 劉禪穎 委員</span><a href="https://docs.google.com/forms/d/e/1FAIpQLSd57Od3cl7ekzOk0FCDpJZar_PWaH0ANHhcCSkxkZbqByVNOw/viewform?usp=pp_url&entry.81411495=C20&entry.1023405674=%E5%8A%89%E7%A6%AA%E7%A9%8E" target="_blank" class="btn-form">📝 填寫評分表</a></div>
+                </div>
+            </div>
+            <div class="location-item">
+                <div class="location-header">
+                    <div>
+                        <div class="location-title">📍 [C21] 巷口按摩</div>
+                        <div class="location-address">臺中市北屯區安順東十街77號</div>
+                        <a href="https://maps.google.com/?q=巷口按摩" target="_blank" class="map-link">🗺️ 開啟 Google 地圖</a>
+                    </div>
+                </div>
+                <div class="evaluators-grid">
+                    <div class="evaluator-box"><span>👤 賴志松 委員</span><a href="https://docs.google.com/forms/d/e/1FAIpQLSd57Od3cl7ekzOk0FCDpJZar_PWaH0ANHhcCSkxkZbqByVNOw/viewform?usp=pp_url&entry.81411495=C21&entry.1023405674=%E8%B3%B4%E5%BF%97%E6%9D%BE" target="_blank" class="btn-form">📝 填寫評分表</a></div>
+                    <div class="evaluator-box"><span>👤 劉禪穎 委員</span><a href="https://docs.google.com/forms/d/e/1FAIpQLSd57Od3cl7ekzOk0FCDpJZar_PWaH0ANHhcCSkxkZbqByVNOw/viewform?usp=pp_url&entry.81411495=C21&entry.1023405674=%E5%8A%89%E7%A6%AA%E7%A9%8E" target="_blank" class="btn-form">📝 填寫評分表</a></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 路線 21 -->
+        <div class="card" data-search="路線21 路線 21 路線編號：21 城 9月22日 金芮茜 黃玉琴 王志宏 D7 祥安按摩-西屯店 D8 祥安按摩-漢口店">
+            <div class="card-header">
+                <div class="route-title-line">
+                    <span class="route-name">路線 21（路線編號：21）｜ 區域：城</span>
+                    <span class="badge badge-evaluator">👨‍⚖️ 評鑑委員：黃玉琴、王志宏</span>
+                </div>
+                <div class="meta-badges">
+                    <span class="badge">📅 9月22日 (二) 下午 14:00:00</span>
+                    <span class="badge badge-companion">🤝 陪同者：金芮茜</span>
+                </div>
+            </div>
+            <div class="location-item">
+                <div class="location-header">
+                    <div>
+                        <div class="location-title">📍 [D7] 祥安按摩-西屯店</div>
+                        <div class="location-address">臺中市西屯區西屯路二段272-2號</div>
+                        <a href="https://maps.google.com/?q=祥安按摩" target="_blank" class="map-link">🗺️ 開啟 Google 地圖</a>
+                    </div>
+                </div>
+                <div class="evaluators-grid">
+                    <div class="evaluator-box"><span>👤 黃玉琴 委員</span><a href="https://docs.google.com/forms/d/e/1FAIpQLSd57Od3cl7ekzOk0FCDpJZar_PWaH0ANHhcCSkxkZbqByVNOw/viewform?usp=pp_url&entry.81411495=D7&entry.1023405674=%E9%BB%83%E7%8E%89%E7%90%B4" target="_blank" class="btn-form">📝 填寫評分表</a></div>
+                    <div class="evaluator-box"><span>👤 王志宏 委員</span><a href="https://docs.google.com/forms/d/e/1FAIpQLSd57Od3cl7ekzOk0FCDpJZar_PWaH0ANHhcCSkxkZbqByVNOw/viewform?usp=pp_url&entry.81411495=D7&entry.1023405674=%E7%8E%8B%E5%BF%97%E5%AE%8F" target="_blank" class="btn-form">📝 填寫評分表</a></div>
+                </div>
+            </div>
+            <div class="location-item">
+                <div class="location-header">
+                    <div>
+                        <div class="location-title">📍 [D8] 祥安按摩-漢口店</div>
+                        <div class="location-address">臺中市西屯區漢口路三段204號</div>
+                        <a href="https://maps.google.com/?q=祥安按摩漢口" target="_blank" class="map-link">🗺️ 開啟 Google 地圖</a>
+                    </div>
+                </div>
+                <div class="evaluators-grid">
+                    <div class="evaluator-box"><span>👤 黃玉琴 委員</span><a href="https://docs.google.com/forms/d/e/1FAIpQLSd57Od3cl7ekzOk0FCDpJZar_PWaH0ANHhcCSkxkZbqByVNOw/viewform?usp=pp_url&entry.81411495=D8&entry.1023405674=%E9%BB%83%E7%8E%89%E7%90%B4" target="_blank" class="btn-form">📝 填寫評分表</a></div>
+                    <div class="evaluator-box"><span>👤 王志宏 委員</span><a href="https://docs.google.com/forms/d/e/1FAIpQLSd57Od3cl7ekzOk0FCDpJZar_PWaH0ANHhcCSkxkZbqByVNOw/viewform?usp=pp_url&entry.81411495=D8&entry.1023405674=%E7%8E%8B%E5%BF%97%E5%AE%8F" target="_blank" class="btn-form">📝 填寫評分表</a></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 路線 22 -->
+        <div class="card" data-search="路線22 路線 22 路線編號：20 城 9月23日 莫玉玲 鄭尹惠 顏昌華 D5 自然甦活視障養身棧-大聖店 D6 祥安按摩-精誠店">
+            <div class="card-header">
+                <div class="route-title-line">
+                    <span class="route-name">路線 22（路線編號：20）｜ 區域：城</span>
+                    <span class="badge badge-evaluator">👨‍⚖️ 評鑑委員：鄭尹惠、顏昌華</span>
+                </div>
+                <div class="meta-badges">
+                    <span class="badge">📅 9月23日 (三) 上午 09:00:00</span>
+                    <span class="badge badge-companion">🤝 陪同者：莫玉玲</span>
+                </div>
+            </div>
+            <div class="location-item">
+                <div class="location-header">
+                    <div>
+                        <div class="location-title">📍 [D5] 自然甦活視障養身棧-大聖店</div>
+                        <div class="location-address">臺中市南屯區大聖街32號</div>
+                        <a href="https://maps.google.com/?q=自然甦活視障按摩養身棧-大聖棧" target="_blank" class="map-link">🗺️ 開啟 Google 地圖</a>
+                    </div>
+                </div>
+                <div class="evaluators-grid">
+                    <div class="evaluator-box"><span>👤 鄭尹惠 委員</span><a href="https://docs.google.com/forms/d/e/1FAIpQLSd57Od3cl7ekzOk0FCDpJZar_PWaH0ANHhcCSkxkZbqByVNOw/viewform?usp=pp_url&entry.81411495=D5&entry.1023405674=%E9%84%AD%E5%B0%B9%E6%83%A0" target="_blank" class="btn-form">📝 填寫評分表</a></div>
+                    <div class="evaluator-box"><span>👤 顏昌華 委員</span><a href="https://docs.google.com/forms/d/e/1FAIpQLSd57Od3cl7ekzOk0FCDpJZar_PWaH0ANHhcCSkxkZbqByVNOw/viewform?usp=pp_url&entry.81411495=D5&entry.1023405674=%E9%A1%8F%E6%98%8C%E8%8F%AF" target="_blank" class="btn-form">📝 填寫評分表</a></div>
+                </div>
+            </div>
+            <div class="location-item">
+                <div class="location-header">
+                    <div>
+                        <div class="location-title">📍 [D6] 祥安按摩-精誠店</div>
+                        <div class="location-address">臺中市西區精誠路114號</div>
+                        <a href="https://maps.google.com/?q=祥安按摩中心（精誠店）" target="_blank" class="map-link">🗺️ 開啟 Google 地圖</a>
+                    </div>
+                </div>
+                <div class="evaluators-grid">
+                    <div class="evaluator-box"><span>👤 鄭尹惠 委員</span><a href="https://docs.google.com/forms/d/e/1FAIpQLSd57Od3cl7ekzOk0FCDpJZar_PWaH0ANHhcCSkxkZbqByVNOw/viewform?usp=pp_url&entry.81411495=D6&entry.1023405674=%E9%84%AD%E5%B0%B9%E6%83%A0" target="_blank" class="btn-form">📝 填寫評分表</a></div>
+                    <div class="evaluator-box"><span>👤 顏昌華 委員</span><a href="https://docs.google.com/forms/d/e/1FAIpQLSd57Od3cl7ekzOk0FCDpJZar_PWaH0ANHhcCSkxkZbqByVNOw/viewform?usp=pp_url&entry.81411495=D6&entry.1023405674=%E9%A1%8F%E6%98%8C%E8%8F%AF" target="_blank" class="btn-form">📝 填寫評分表</a></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 路線 23 -->
+        <div class="card" data-search="路線23 路線 23 路線編號：9 城 9月23日 金芮茜 黃玉琴 張英裕 C10 白金青池足體按摩館 C6 真豪養生按摩">
+            <div class="card-header">
+                <div class="route-title-line">
+                    <span class="route-name">路線 23（路線編號：9）｜ 區域：城</span>
+                    <span class="badge badge-evaluator">👨‍⚖️ 評鑑委員：黃玉琴、張英裕</span>
+                </div>
+                <div class="meta-badges">
+                    <span class="badge">📅 9月23日 (三) 下午 14:00:00</span>
+                    <span class="badge badge-companion">🤝 陪同者：金芮茜</span>
+                </div>
+            </div>
+            <div class="location-item">
+                <div class="location-header">
+                    <div>
+                        <div class="location-title">📍 [C10] 白金青池足體按摩館</div>
+                        <div class="location-address">臺中市西屯區上石路109號</div>
+                        <a href="https://maps.google.com/?q=白金青池足體按摩館" target="_blank" class="map-link">🗺️ 開啟 Google 地圖</a>
+                    </div>
+                </div>
+                <div class="evaluators-grid">
+                    <div class="evaluator-box"><span>👤 黃玉琴 委員</span><a href="https://docs.google.com/forms/d/e/1FAIpQLSd57Od3cl7ekzOk0FCDpJZar_PWaH0ANHhcCSkxkZbqByVNOw/viewform?usp=pp_url&entry.81411495=C10&entry.1023405674=%E9%BB%83%E7%8E%89%E7%90%B4" target="_blank" class="btn-form">📝 填寫評分表</a></div>
+                    <div class="evaluator-box"><span>👤 張英裕 委員</span><a href="https://docs.google.com/forms/d/e/1FAIpQLSd57Od3cl7ekzOk0FCDpJZar_PWaH0ANHhcCSkxkZbqByVNOw/viewform?usp=pp_url&entry.81411495=C10&entry.1023405674=%E5%BC%B5%E8%8B%B1%E8%A3%95" target="_blank" class="btn-form">📝 填寫評分表</a></div>
+                </div>
+            </div>
+            <div class="location-item">
+                <div class="location-header">
+                    <div>
+                        <div class="location-title">📍 [C6] 真豪養生按摩</div>
+                        <div class="location-address">臺中市西屯區福星路397號</div>
+                        <a href="https://maps.google.com/?q=真豪視障專業按摩" target="_blank" class="map-link">🗺️ 開啟 Google 地圖</a>
+                    </div>
+                </div>
+                <div class="evaluators-grid">
+                    <div class="evaluator-box"><span>👤 黃玉琴 委員</span><a href="https://docs.google.com/forms/d/e/1FAIpQLSd57Od3cl7ekzOk0FCDpJZar_PWaH0ANHhcCSkxkZbqByVNOw/viewform?usp=pp_url&entry.81411495=C6&entry.1023405674=%E9%BB%83%E7%8E%89%E7%90%B4" target="_blank" class="btn-form">📝 填寫評分表</a></div>
+                    <div class="evaluator-box"><span>👤 張英裕 委員</span><a href="https://docs.google.com/forms/d/e/1FAIpQLSd57Od3cl7ekzOk0FCDpJZar_PWaH0ANHhcCSkxkZbqByVNOw/viewform?usp=pp_url&entry.81411495=C6&entry.1023405674=%E5%BC%B5%E8%8B%B1%E8%A3%95" target="_blank" class="btn-form">📝 填寫評分表</a></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 路線 24 -->
+        <div class="card" data-search="路線24 路線 24 路線編號：13 城 9月24日 莫玉玲 吳忠宏 鄭尹惠 C14 安泰按摩之家 C15 松田養生館">
+            <div class="card-header">
+                <div class="route-title-line">
+                    <span class="route-name">路線 24（路線編號：13）｜ 區域：城</span>
+                    <span class="badge badge-evaluator">👨‍⚖️ 評鑑委員：吳忠宏、鄭尹惠</span>
+                </div>
+                <div class="meta-badges">
+                    <span class="badge">📅 9月24日 (四) 上午 10:00:00</span>
+                    <span class="badge badge-companion">🤝 陪同者：莫玉玲</span>
+                </div>
+            </div>
+            <div class="location-item">
+                <div class="location-header">
+                    <div>
+                        <div class="location-title">📍 [C14] 安泰按摩之家</div>
+                        <div class="location-address">臺中市西區向上路一段11號</div>
+                        <a href="https://maps.google.com/?q=安泰按摩之家" target="_blank" class="map-link">🗺️ 開啟 Google 地圖</a>
+                    </div>
+                </div>
+                <div class="evaluators-grid">
+                    <div class="evaluator-box"><span>👤 吳忠宏 委員</span><a href="https://docs.google.com/forms/d/e/1FAIpQLSd57Od3cl7ekzOk0FCDpJZar_PWaH0ANHhcCSkxkZbqByVNOw/viewform?usp=pp_url&entry.81411495=C14&entry.1023405674=%E5%90%B3%E5%BF%A0%E5%AE%8F" target="_blank" class="btn-form">📝 填寫評分表</a></div>
+                    <div class="evaluator-box"><span>👤 鄭尹惠 委員</span><a href="https://docs.google.com/forms/d/e/1FAIpQLSd57Od3cl7ekzOk0FCDpJZar_PWaH0ANHhcCSkxkZbqByVNOw/viewform?usp=pp_url&entry.81411495=C14&entry.1023405674=%E9%84%AD%E5%B0%B9%E6%83%A0" target="_blank" class="btn-form">📝 填寫評分表</a></div>
+                </div>
+            </div>
+            <div class="location-item">
+                <div class="location-header">
+                    <div>
+                        <div class="location-title">📍 [C15] 松田養生館</div>
+                        <div class="location-address">臺中市南屯區向上路二段429號</div>
+                        <a href="https://maps.google.com/?q=松田腳底按摩" target="_blank" class="map-link">🗺️ 開啟 Google 地圖</a>
+                    </div>
+                </div>
+                <div class="evaluators-grid">
+                    <div class="evaluator-box"><span>👤 吳忠宏 委員</span><a href="https://docs.google.com/forms/d/e/1FAIpQLSd57Od3cl7ekzOk0FCDpJZar_PWaH0ANHhcCSkxkZbqByVNOw/viewform?usp=pp_url&entry.81411495=C15&entry.1023405674=%E5%90%B3%E5%BF%A0%E5%AE%8F" target="_blank" class="btn-form">📝 填寫評分表</a></div>
+                    <div class="evaluator-box"><span>👤 鄭尹惠 委員</span><a href="https://docs.google.com/forms/d/e/1FAIpQLSd57Od3cl7ekzOk0FCDpJZar_PWaH0ANHhcCSkxkZbqByVNOw/viewform?usp=pp_url&entry.81411495=C15&entry.1023405674=%E9%84%AD%E5%B0%B9%E6%83%A0" target="_blank" class="btn-form">📝 填寫評分表</a></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    // 關鍵字搜尋與委員、陪同者、日期複選篩選功能
+    const selectedFilters = {
+        committee: new Set(),
+        companion: new Set(),
+        date: new Set()
+    };
+
+    function filterData() {
+        const input = document.getElementById('searchInput').value.trim().toLowerCase();
+        const cards = document.querySelectorAll('.card');
+
+        cards.forEach(card => {
+            const searchData = card.getAttribute('data-search').toLowerCase();
+            const matchesKeyword = !input || searchData.includes(input);
+            const matchesGroups = Object.entries(selectedFilters).every(([group, values]) => {
+                return values.size === 0 || [...values].some(value => searchData.includes(value.toLowerCase()));
+            });
+
+            card.style.display = matchesKeyword && matchesGroups ? "" : "none";
+        });
+
+        const hasSelectedFilter = Object.values(selectedFilters).some(values => values.size > 0);
+        document.getElementById('clearFiltersBtn').classList.toggle('active', !hasSelectedFilter && !input);
+    }
+
+    function toggleFilter(name, btn) {
+        const group = btn.closest('.filter-group').dataset.filterType;
+        const values = selectedFilters[group];
+
+        if (values.has(name)) {
+            values.delete(name);
+            btn.classList.remove('active');
+        } else {
+            values.add(name);
+            btn.classList.add('active');
+        }
+
+        filterData();
+    }
+
+    function clearAllFilters() {
+        Object.values(selectedFilters).forEach(values => values.clear());
+        document.querySelectorAll('.filter-group .filter-btn').forEach(button => button.classList.remove('active'));
+        document.getElementById('searchInput').value = '';
+        filterData();
+    }
+</script>
+</body>
+</html>
