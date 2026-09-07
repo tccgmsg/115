@@ -1368,7 +1368,7 @@ body { -webkit-text-size-adjust: 100%; }
         filterData();
     }
 </script>
-<!-- 請將以下程式碼直接貼在您原始 index.html 的 </body> 之前 -->
+
 <script>
 document.addEventListener("DOMContentLoaded", function() {
     // 1. 建立「未完成」與「已完成」的區塊容器
@@ -1376,14 +1376,14 @@ document.addEventListener("DOMContentLoaded", function() {
     
     const activeHeader = document.createElement('h2');
     activeHeader.style.cssText = "margin-top: 20px; color: #007bff; border-bottom: 2px solid #007bff; padding-bottom: 5px;";
-    activeHeader.textContent = "📌 未完成評鑑路線";
+    activeHeader.textContent = "📌 即將到來的評鑑路線";
     
     const activeSection = document.createElement('div');
     activeSection.id = "activeRoutes";
 
     const completedHeader = document.createElement('h2');
     completedHeader.style.cssText = "margin-top: 30px; color: #6c757d; border-bottom: 2px solid #6c757d; padding-bottom: 5px;";
-    completedHeader.textContent = "✅ 已完成評鑑路線";
+    completedHeader.textContent = "✅ 已完成的評鑑路線";
 
     const completedSection = document.createElement('div');
     completedSection.id = "completedRoutes";
@@ -1427,7 +1427,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     card.setAttribute('data-completed', 'true');
                     card.style.opacity = "0.75";
                     card.style.backgroundColor = "#f8f9fa";
-                    toggleBtn.textContent = "↩ 復原為未完成";
+                    toggleBtn.textContent = "↩ 復原為即將到來";
                     toggleBtn.style.backgroundColor = "#6c757d";
                     completedSection.appendChild(card);
                 }
