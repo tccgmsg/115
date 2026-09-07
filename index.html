@@ -1368,5 +1368,79 @@ body { -webkit-text-size-adjust: 100%; }
         filterData();
     }
 </script>
+<!-- 請將以下程式碼直接貼在您原始 index.html 的 </body> 之前 -->
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    // 1. 建立「未完成」與「已完成」的區塊容器
+    const container = document.querySelector('.container') || document.body;
+    
+    const activeHeader = document.createElement('h2');
+    activeHeader.style.cssText = "margin-top: 20px; color: #007bff; border-bottom: 2px solid #007bff; padding-bottom: 5px;";
+    activeHeader.textContent = "📌 未完成評鑑路線";
+    
+    const activeSection = document.createElement('div');
+    activeSection.id = "activeRoutes";
+
+    const completedHeader = document.createElement('h2');
+    completedHeader.style.cssText = "margin-top: 30px; color: #6c757d; border-bottom: 2px solid #6c757d; padding-bottom: 5px;";
+    completedHeader.textContent = "✅ 已完成評鑑路線";
+
+    const completedSection = document.createElement('div');
+    completedSection.id = "completedRoutes";
+
+    // 2. 取得頁面中所有的路線卡片
+    const cards = Array.from(document.querySelectorAll('.card'));
+    
+    if (cards.length > 0) {
+        // 將卡片移動到未完成區塊
+        const parent = cards[0].parentNode;
+        parent.insertBefore(activeHeader, cards[0]);
+        parent.insertBefore(activeSection, cards[0]);
+        parent.insertBefore(completedHeader, cards[0]);
+        parent.insertBefore(completedSection, cards[0]);
+
+        cards.forEach(card => {
+            // 預設狀態為未完成
+            card.setAttribute('data-completed', 'false');
+            activeSection.appendChild(card);
+
+            // 尋找按鈕插入位置（優先找 .route-title-line 或 .card-header，找不到則直接插在卡片頂部）
+            const header = card.querySelector('.route-title-line') || card.querySelector('.card-header') || card;
+            
+            // 建立狀態切換按鈕
+            const toggleBtn = document.createElement('button');
+            toggleBtn.className = 'btn-status-toggle';
+            toggleBtn.style.cssText = "background-color: #2563eb; color: white; border: none; padding: 4px 10px; border-radius: 4px; cursor: pointer; font-size: 0.85em; float: right; margin-left: 10px;";
+            toggleBtn.textContent = "✓ 標記為完成";
+
+            toggleBtn.onclick = function(e) {
+                e.stopPropagation();
+                const isCompleted = card.getAttribute('data-completed') === 'true';
+                if (isCompleted) {
+                    card.setAttribute('data-completed', 'false');
+                    card.style.opacity = "1";
+                    card.style.backgroundColor = "";
+                    toggleBtn.textContent = "✓ 標記為完成";
+                    toggleBtn.style.backgroundColor = "#2563eb";
+                    activeSection.appendChild(card);
+                } else {
+                    card.setAttribute('data-completed', 'true');
+                    card.style.opacity = "0.75";
+                    card.style.backgroundColor = "#f8f9fa";
+                    toggleBtn.textContent = "↩ 復原為未完成";
+                    toggleBtn.style.backgroundColor = "#6c757d";
+                    completedSection.appendChild(card);
+                }
+                // 觸發原有的篩選邏輯（如有）
+                if (typeof filterData === 'function') {
+                    filterData();
+                }
+            };
+
+            header.insertBefore(toggleBtn, header.firstChild);
+        });
+    }
+});
+</script>
 </body>
 </html>
