@@ -1368,12 +1368,33 @@ body { -webkit-text-size-adjust: 100%; }
         filterData();
     }
 </script>
-
+<!-- GitHub 自動同步腳本 (方案二) -->
 <script>
 document.addEventListener("DOMContentLoaded", function() {
-    // 1. 建立「未完成」與「已完成」的區塊容器
-    const container = document.querySelector('.container') || document.body;
+    const REPO_OWNER = "tccgmsg";
+    const REPO_NAME = "115";
+    const FILE_PATH = "index.html";
+    const BRANCH = "main";
+
+    const parent = document.querySelector('.container') || document.body;
+
+    // 建立控制面板容器 (右上角固定)
+    const adminPanel = document.createElement('div');
+    adminPanel.style.cssText = "position: fixed; top: 10px; right: 10px; z-index: 9999; background: #ffffff; border: 1px solid #ccc; padding: 10px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.15); font-family: sans-serif;";
     
+    const panelTitle = document.createElement('div');
+    panelTitle.style.cssText = "font-weight: bold; margin-bottom: 5px; font-size: 0.9em; color: #333;";
+    panelTitle.textContent = "⚙️ 管理員同步控制台";
+    
+    const syncBtn = document.createElement('button');
+    syncBtn.textContent = "🚀 儲存並同步至 GitHub";
+    syncBtn.style.cssText = "background: #28a745; color: white; border: none; padding: 6px 12px; border-radius: 4px; font-weight: bold; cursor: pointer; font-size: 0.85em; display: block; width: 100%;";
+    
+    adminPanel.appendChild(panelTitle);
+    adminPanel.appendChild(syncBtn);
+    document.body.appendChild(adminPanel);
+
+    // 建立分區標題
     const activeHeader = document.createElement('h2');
     activeHeader.style.cssText = "margin-top: 20px; color: #007bff; border-bottom: 2px solid #007bff; padding-bottom: 5px;";
     activeHeader.textContent = "📌 即將到來的評鑑路線";
@@ -1388,35 +1409,36 @@ document.addEventListener("DOMContentLoaded", function() {
     const completedSection = document.createElement('div');
     completedSection.id = "completedRoutes";
 
-    // 2. 取得頁面中所有的路線卡片
     const cards = Array.from(document.querySelectorAll('.card'));
     
     if (cards.length > 0) {
-        // 將卡片移動到未完成區塊
-        const parent = cards[0].parentNode;
-        parent.insertBefore(activeHeader, cards[0]);
-        parent.insertBefore(activeSection, cards[0]);
-        parent.insertBefore(completedHeader, cards[0]);
-        parent.insertBefore(completedSection, cards[0]);
+        const firstCardParent = cards[0].parentNode;
+        firstCardParent.insertBefore(activeHeader, cards[0]);
+        firstCardParent.insertBefore(activeSection, cards[0]);
+        firstCardParent.insertBefore(completedHeader, cards[0]);
+        firstCardParent.insertBefore(completedSection, cards[0]);
 
         cards.forEach(card => {
-            // 預設狀態為未完成
-            card.setAttribute('data-completed', 'false');
-            activeSection.appendChild(card);
-
-            // 尋找按鈕插入位置（優先找 .route-title-line 或 .card-header，找不到則直接插在卡片頂部）
+            const isDone = card.getAttribute('data-completed') === 'true';
             const header = card.querySelector('.route-title-line') || card.querySelector('.card-header') || card;
             
-            // 建立狀態切換按鈕
             const toggleBtn = document.createElement('button');
             toggleBtn.className = 'btn-status-toggle';
-            toggleBtn.style.cssText = "background-color: #2563eb; color: white; border: none; padding: 4px 10px; border-radius: 4px; cursor: pointer; font-size: 0.85em; float: right; margin-left: 10px;";
-            toggleBtn.textContent = "✓ 標記為完成";
+            toggleBtn.style.cssText = "background-color: " + (isDone ? "#6c757d" : "#2563eb") + "; color: white; border: none; padding: 4px 10px; border-radius: 4px; cursor: pointer; font-size: 0.85em; float: right; margin-left: 10px;";
+            toggleBtn.textContent = isDone ? "↩ 復原為即將到來" : "✓ 標記為完成";
+
+            if (isDone) {
+                card.style.opacity = "0.75";
+                card.style.backgroundColor = "#f8f9fa";
+                completedSection.appendChild(card);
+            } else {
+                activeSection.appendChild(card);
+            }
 
             toggleBtn.onclick = function(e) {
                 e.stopPropagation();
-                const isCompleted = card.getAttribute('data-completed') === 'true';
-                if (isCompleted) {
+                const currentStatus = card.getAttribute('data-completed') === 'true';
+                if (currentStatus) {
                     card.setAttribute('data-completed', 'false');
                     card.style.opacity = "1";
                     card.style.backgroundColor = "";
@@ -1431,15 +1453,97 @@ document.addEventListener("DOMContentLoaded", function() {
                     toggleBtn.style.backgroundColor = "#6c757d";
                     completedSection.appendChild(card);
                 }
-                // 觸發原有的篩選邏輯（如有）
-                if (typeof filterData === 'function') {
-                    filterData();
-                }
             };
 
             header.insertBefore(toggleBtn, header.firstChild);
         });
     }
+
+    // GitHub API 同步邏輯
+    syncBtn.onclick = async function() {
+        let token = localStorage.getItem("gh_pat_token");
+        if (!token) {
+            token = prompt("請輸入您的 GitHub Personal Access Token (PAT):");
+            if (!token) return;
+            localStorage.setItem("gh_pat_token", token);
+        }
+
+        syncBtn.disabled = true;
+        syncBtn.textContent = "⏳ 同步中...";
+
+        try {
+            // 1. 取得目前檔案的 SHA (GitHub API 要求更新必須附帶當前 SHA)
+            const getFileUrl = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${FILE_PATH}?ref=${BRANCH}`;
+            const fileRes = await fetch(getFileUrl, {
+                headers: { "Authorization": `token ${token}` }
+            });
+
+            if (!fileRes.ok) {
+                throw new Error("無法驗證 GitHub 權限或讀取檔案，請檢查 Token 是否正確。");
+            }
+
+            const fileData = await fileRes.json();
+            const currentSha = fileData.sha;
+
+            // 2. 複製目前的 DOM 並更新卡片狀態
+            const cloneDoc = document.documentElement.cloneNode(true);
+            
+            // 清除動態生成的控制面板與按鈕，保持原始檔結構乾淨
+            cloneDoc.querySelectorAll('.btn-status-toggle').forEach(el => el.remove());
+            cloneDoc.querySelectorAll('#activeRoutes, #completedRoutes, h2').forEach(el => {
+                if (el.textContent.includes('評鑑路線')) el.remove();
+            });
+            const dynamicPanel = cloneDoc.querySelector('div[style*="position: fixed"]');
+            if (dynamicPanel) dynamicPanel.remove();
+
+            // 將記憶體中的 data-completed 屬性同步回克隆的 HTML 中
+            const originalCards = document.querySelectorAll('.card');
+            const clonedCards = cloneDoc.querySelectorAll('.card');
+            originalCards.forEach((c, idx) => {
+                clonedCards[idx].setAttribute('data-completed', c.getAttribute('data-completed') || 'false');
+            });
+
+            const updatedHtml = "<!DOCTYPE html>\n" + cloneDoc.outerHTML;
+
+            // 3. UTF-8 轉 Base64（避免中文字元編碼錯誤）
+            const encoder = new TextEncoder();
+            const data = encoder.encode(updatedHtml);
+            let binary = "";
+            for (let i = 0; i < data.length; i++) {
+                binary += String.fromCharCode(data[i]);
+            }
+            const contentBase64 = btoa(binary);
+
+            // 4. 呼叫 GitHub API 更新檔案
+            const updateUrl = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${FILE_PATH}`;
+            const updateRes = await fetch(updateUrl, {
+                method: "PUT",
+                headers: {
+                    "Authorization": `token ${token}`,
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    message: "Update route completion status via Web Admin",
+                    content: contentBase64,
+                    sha: currentSha,
+                    branch: BRANCH
+                })
+            });
+
+            if (updateRes.ok) {
+                alert("✅ 同步成功！GitHub Pages 將在 1~2 分鐘內自動更新部署，所有人重新整理後即可看到最新狀態。");
+            } else {
+                const errData = await updateRes.json();
+                alert("❌ 同步失敗：" + (errData.message || "未知錯誤"));
+                localStorage.removeItem("gh_pat_token"); // 若失敗清除 Token 讓使用者重新輸入
+            }
+        } catch (err) {
+            alert("❌ 發生錯誤：" + err.message);
+        } finally {
+            syncBtn.disabled = false;
+            syncBtn.textContent = "🚀 儲存並同步至 GitHub";
+        }
+    };
 });
 </script>
 </body>
