@@ -1367,7 +1367,7 @@ body { -webkit-text-size-adjust: 100%; }
         filterData();
     }
 </script>
-<!-- GitHub 自動同步腳本 (方案二) -->
+<!-- GitHub 自動同步腳本 (迷你不擋視線版) -->
 <script>
 document.addEventListener("DOMContentLoaded", function() {
     const REPO_OWNER = "tccgmsg";
@@ -1377,21 +1377,52 @@ document.addEventListener("DOMContentLoaded", function() {
 
     const parent = document.querySelector('.container') || document.body;
 
-    // 建立控制面板容器 (右上角固定)
+    // 建立收合式控制面板容器 (固定於右上角)
     const adminPanel = document.createElement('div');
-    adminPanel.style.cssText = "position: fixed; top: 10px; right: 10px; z-index: 9999; background: #ffffff; border: 1px solid #ccc; padding: 10px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.15); font-family: sans-serif;";
-    
-    const panelTitle = document.createElement('div');
-    panelTitle.style.cssText = "font-weight: bold; margin-bottom: 5px; font-size: 0.9em; color: #333;";
-    panelTitle.textContent = "⚙️ 管理員同步控制台";
-    
+    adminPanel.style.cssText = "position: fixed; top: 12px; right: 12px; z-index: 9999; font-family: system-ui, -apple-system, sans-serif;";
+
+    // 迷你切換按鈕 (預設只顯示小圖示)
+    const togglePanelBtn = document.createElement('button');
+    togglePanelBtn.innerHTML = "⚙️";
+    togglePanelBtn.title = "管理員同步選單";
+    togglePanelBtn.style.cssText = "background: #ffffff; border: 1px solid #ccc; width: 36px; height: 36px; border-radius: 50%; box-shadow: 0 2px 6px rgba(0,0,0,0.2); cursor: pointer; font-size: 16px; display: flex; align-items: center; justify-content: center;";
+
+    // 展開選單區塊 (預設隱藏)
+    const menuBox = document.createElement('div');
+    menuBox.style.cssText = "display: none; position: absolute; top: 42px; right: 0; background: #ffffff; border: 1px solid #ddd; padding: 10px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); width: 200px; text-align: center;";
+
     const syncBtn = document.createElement('button');
     syncBtn.textContent = "🚀 儲存並同步至 GitHub";
-    syncBtn.style.cssText = "background: #28a745; color: white; border: none; padding: 6px 12px; border-radius: 4px; font-weight: bold; cursor: pointer; font-size: 0.85em; display: block; width: 100%;";
-    
-    adminPanel.appendChild(panelTitle);
-    adminPanel.appendChild(syncBtn);
+    syncBtn.style.cssText = "background: #28a745; color: white; border: none; padding: 8px 12px; border-radius: 5px; font-weight: bold; cursor: pointer; font-size: 0.85em; width: 100%;";
+
+    const clearTokenBtn = document.createElement('button');
+    clearTokenBtn.textContent = "🔑 清除紀錄的 Token";
+    clearTokenBtn.style.cssText = "background: transparent; color: #dc3545; border: none; padding: 4px; font-size: 0.75em; cursor: pointer; margin-top: 6px; text-decoration: underline;";
+
+    menuBox.appendChild(syncBtn);
+    menuBox.appendChild(clearTokenBtn);
+    adminPanel.appendChild(togglePanelBtn);
+    adminPanel.appendChild(menuBox);
     document.body.appendChild(adminPanel);
+
+    // 點擊小圖示切換選單展開/收合
+    togglePanelBtn.onclick = function(e) {
+        e.stopPropagation();
+        menuBox.style.display = menuBox.style.display === "none" ? "block" : "none";
+    };
+
+    // 點擊頁面其他地方自動收合選單
+    document.addEventListener('click', function(e) {
+        if (!adminPanel.contains(e.target)) {
+            menuBox.style.display = "none";
+        }
+    });
+
+    // 清除 Token 邏輯
+    clearTokenBtn.onclick = function() {
+        localStorage.removeItem("gh_pat_token");
+        alert("已清除記住的 Token！再次同步時將會重新詢問。");
+    };
 
     // 建立分區標題
     const activeHeader = document.createElement('h2');
@@ -1471,7 +1502,6 @@ document.addEventListener("DOMContentLoaded", function() {
         syncBtn.textContent = "⏳ 同步中...";
 
         try {
-            // 1. 取得目前檔案的 SHA (GitHub API 要求更新必須附帶當前 SHA)
             const getFileUrl = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${FILE_PATH}?ref=${BRANCH}`;
             const fileRes = await fetch(getFileUrl, {
                 headers: { "Authorization": `token ${token}` }
@@ -1484,7 +1514,6 @@ document.addEventListener("DOMContentLoaded", function() {
             const fileData = await fileRes.json();
             const currentSha = fileData.sha;
 
-            // 2. 複製目前的 DOM 並更新卡片狀態
             const cloneDoc = document.documentElement.cloneNode(true);
             
             // 清除動態生成的控制面板與按鈕，保持原始檔結構乾淨
@@ -1495,7 +1524,6 @@ document.addEventListener("DOMContentLoaded", function() {
             const dynamicPanel = cloneDoc.querySelector('div[style*="position: fixed"]');
             if (dynamicPanel) dynamicPanel.remove();
 
-            // 將記憶體中的 data-completed 屬性同步回克隆的 HTML 中
             const originalCards = document.querySelectorAll('.card');
             const clonedCards = cloneDoc.querySelectorAll('.card');
             originalCards.forEach((c, idx) => {
@@ -1504,7 +1532,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
             const updatedHtml = "<!DOCTYPE html>\n" + cloneDoc.outerHTML;
 
-            // 3. UTF-8 轉 Base64（避免中文字元編碼錯誤）
             const encoder = new TextEncoder();
             const data = encoder.encode(updatedHtml);
             let binary = "";
@@ -1513,7 +1540,6 @@ document.addEventListener("DOMContentLoaded", function() {
             }
             const contentBase64 = btoa(binary);
 
-            // 4. 呼叫 GitHub API 更新檔案
             const updateUrl = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${FILE_PATH}`;
             const updateRes = await fetch(updateUrl, {
                 method: "PUT",
@@ -1531,10 +1557,11 @@ document.addEventListener("DOMContentLoaded", function() {
 
             if (updateRes.ok) {
                 alert("✅ 同步成功！GitHub Pages 將在 1~2 分鐘內自動更新部署，所有人重新整理後即可看到最新狀態。");
+                menuBox.style.display = "none";
             } else {
                 const errData = await updateRes.json();
                 alert("❌ 同步失敗：" + (errData.message || "未知錯誤"));
-                localStorage.removeItem("gh_pat_token"); // 若失敗清除 Token 讓使用者重新輸入
+                localStorage.removeItem("gh_pat_token");
             }
         } catch (err) {
             alert("❌ 發生錯誤：" + err.message);
