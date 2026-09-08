@@ -1367,7 +1367,7 @@ body { -webkit-text-size-adjust: 100%; }
         filterData();
     }
 </script>
-<!-- GitHub 自動同步腳本 (迷你不擋視線版) -->
+<!-- GitHub 自動同步腳本 (修復 setAttribute 錯誤 + 迷你不擋視線版) -->
 <script>
 document.addEventListener("DOMContentLoaded", function() {
     const REPO_OWNER = "tccgmsg";
@@ -1375,10 +1375,9 @@ document.addEventListener("DOMContentLoaded", function() {
     const FILE_PATH = "index.html";
     const BRANCH = "main";
 
-    const parent = document.querySelector('.container') || document.body;
-
     // 建立收合式控制面板容器 (固定於右上角)
     const adminPanel = document.createElement('div');
+    adminPanel.id = "adminPanelContainer";
     adminPanel.style.cssText = "position: fixed; top: 12px; right: 12px; z-index: 9999; font-family: system-ui, -apple-system, sans-serif;";
 
     // 迷你切換按鈕 (預設只顯示小圖示)
@@ -1426,6 +1425,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // 建立分區標題
     const activeHeader = document.createElement('h2');
+    activeHeader.className = "dynamic-section-title";
     activeHeader.style.cssText = "margin-top: 20px; color: #007bff; border-bottom: 2px solid #007bff; padding-bottom: 5px;";
     activeHeader.textContent = "📌 即將到來的評鑑路線";
     
@@ -1433,6 +1433,7 @@ document.addEventListener("DOMContentLoaded", function() {
     activeSection.id = "activeRoutes";
 
     const completedHeader = document.createElement('h2');
+    completedHeader.className = "dynamic-section-title";
     completedHeader.style.cssText = "margin-top: 30px; color: #6c757d; border-bottom: 2px solid #6c757d; padding-bottom: 5px;";
     completedHeader.textContent = "✅ 已完成的評鑑路線";
 
@@ -1514,24 +1515,29 @@ document.addEventListener("DOMContentLoaded", function() {
             const fileData = await fileRes.json();
             const currentSha = fileData.sha;
 
+            // 複製當前整個 DOM 結構
             const cloneDoc = document.documentElement.cloneNode(true);
             
-            // 清除動態生成的控制面板與按鈕，保持原始檔結構乾淨
-            cloneDoc.querySelectorAll('.btn-status-toggle').forEach(el => el.remove());
-            cloneDoc.querySelectorAll('#activeRoutes, #completedRoutes, h2').forEach(el => {
-                if (el.textContent.includes('評鑑路線')) el.remove();
-            });
-            const dynamicPanel = cloneDoc.querySelector('div[style*="position: fixed"]');
-            if (dynamicPanel) dynamicPanel.remove();
-
+            // 1. 將當前卡片的 data-completed 屬性安全同步寫入 cloneDoc 中
             const originalCards = document.querySelectorAll('.card');
             const clonedCards = cloneDoc.querySelectorAll('.card');
-            originalCards.forEach((c, idx) => {
-                clonedCards[idx].setAttribute('data-completed', c.getAttribute('data-completed') || 'false');
+
+            originalCards.forEach((origCard, idx) => {
+                if (clonedCards[idx]) {
+                    const status = origCard.getAttribute('data-completed') || 'false';
+                    clonedCards[idx].setAttribute('data-completed', status);
+                }
             });
+
+            // 2. 清除克隆 DOM 中的動態生成元素，保持 HTML 庫檔案結構潔淨
+            cloneDoc.querySelectorAll('.btn-status-toggle').forEach(el => el.remove());
+            cloneDoc.querySelectorAll('#activeRoutes, #completedRoutes, .dynamic-section-title').forEach(el => el.remove());
+            const dynamicPanel = cloneDoc.querySelector('#adminPanelContainer');
+            if (dynamicPanel) dynamicPanel.remove();
 
             const updatedHtml = "<!DOCTYPE html>\n" + cloneDoc.outerHTML;
 
+            // 轉成 UTF-8 Base64
             const encoder = new TextEncoder();
             const data = encoder.encode(updatedHtml);
             let binary = "";
@@ -1540,6 +1546,7 @@ document.addEventListener("DOMContentLoaded", function() {
             }
             const contentBase64 = btoa(binary);
 
+            // 送出 PUT 請求更新至 GitHub
             const updateUrl = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${FILE_PATH}`;
             const updateRes = await fetch(updateUrl, {
                 method: "PUT",
